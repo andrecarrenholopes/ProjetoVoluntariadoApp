@@ -9,3 +9,7 @@ Para conseguir testar em sua máquina instale:
 
 -Wamp
 
+
+copiar a pasta Android que está na pasta "projetovoluntariado - php" para a pasta: "C:\wamp64\www\projetovoluntariado"
+
+use o Genymotion como emulador (o ip já está configurado para ele, se quiser outro emulador tem que alterar isso)
