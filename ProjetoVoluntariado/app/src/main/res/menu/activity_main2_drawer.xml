@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_meu_perfil"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Meu Perfil" />
+        <item
+            android:id="@+id/nav_buscar"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Buscar Vagas e ONGs" />
+        <item
+            android:id="@+id/nav_minhas_inscricoes"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Minhas Inscrições" />
+    </group>
+
+    <item android:title="Gerenciamento de Projetos e ONGs">
+        <menu>
+            <item
+                android:id="@+id/nav_cadastro_projetos"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Cadastrar Projetos e ONGs" />
+            <item
+                android:id="@+id/nav_meus_projetos"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Meus Projetos e ONGs" />
+        </menu>
+    </item>
+
+</menu>

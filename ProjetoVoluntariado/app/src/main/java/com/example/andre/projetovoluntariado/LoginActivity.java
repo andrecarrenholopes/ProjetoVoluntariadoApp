@@ -12,6 +12,7 @@ package com.example.andre.projetovoluntariado;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.ProgressBar;
+        import android.widget.TextView;
         import android.widget.Toast;
 
         import com.android.volley.AuthFailureError;
@@ -30,6 +31,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText editTextUsername, editTextPassword;
     private Button buttonLogin;
+
+    private TextView textViewRegister;
+
     private ProgressDialog progressDialog;
 
     @Override
@@ -46,11 +50,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        textViewRegister = (TextView) findViewById(R.id.textViewRegister);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
 
         buttonLogin.setOnClickListener(this);
+        textViewRegister.setOnClickListener(this);
 
     }
 
@@ -76,7 +82,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 obj.getString("username"),
                                                 obj.getString("email")
                                         );
-                                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                                //startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                                startActivity(new Intent(getApplicationContext(), Main2Activity.class));
                                 finish();
                             }else{
                                 Toast.makeText(
@@ -121,5 +128,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(view == buttonLogin){
             userLogin();
         }
+        if(view == textViewRegister) {
+            startActivity(new Intent(this, RegisterActivity.class));
+        }
+
+
     }
 }
