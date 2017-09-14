@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(this, ProfileActivity.class));
+            startActivity(new Intent(this, Main2Activity.class));
             return;
         }
 
@@ -78,9 +78,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if(!obj.getBoolean("error")){
                                 SharedPrefManager.getInstance(getApplicationContext())
                                         .userLogin(
-                                                obj.getInt("id"),
-                                                obj.getString("username"),
-                                                obj.getString("email")
+                                                obj.getInt("CPF"),
+                                                obj.getString("NomeDeUsuario"),
+                                                obj.getString("Email")
                                         );
                                 //startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                                 startActivity(new Intent(getApplicationContext(), Main2Activity.class));

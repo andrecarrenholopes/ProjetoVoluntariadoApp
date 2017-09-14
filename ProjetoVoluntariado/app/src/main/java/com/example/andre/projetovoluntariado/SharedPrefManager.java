@@ -5,7 +5,9 @@ package com.example.andre.projetovoluntariado;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.Settings;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -69,7 +71,7 @@ public class SharedPrefManager {
     }
 
 
-    public String getUsername(){
+    public String getUserName(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_USERNAME, null);
     }
@@ -77,5 +79,11 @@ public class SharedPrefManager {
     public String getUserEmail(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_USER_EMAIL, null);
+    }
+
+    public int getUserId(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_USER_ID, 0);
+
     }
 }

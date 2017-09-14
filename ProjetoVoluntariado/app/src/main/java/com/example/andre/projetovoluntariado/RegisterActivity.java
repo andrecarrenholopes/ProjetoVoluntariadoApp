@@ -25,7 +25,7 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private EditText editTextUsername, editTextEmail, editTextPassword;
+    private EditText editTextCPF, editTextNomeCompleto, editTextNomeDeUsuario, editTextEmail, editTextSenha;
     private Button buttonRegister;
     private ProgressDialog progressDialog;
 
@@ -42,9 +42,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
+        editTextCPF = (EditText) findViewById(R.id.editTextCPF);
+        editTextNomeCompleto = (EditText) findViewById(R.id.editTextNomeCompleto);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextUsername = (EditText) findViewById(R.id.editTextUsername);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextNomeDeUsuario = (EditText) findViewById(R.id.editTextNomeDeUsuario);
+        editTextSenha = (EditText) findViewById(R.id.editTextSenha);
 
         textViewLogin = (TextView) findViewById(R.id.textViewLogin);
 
@@ -57,9 +59,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void registerUser() {
+
+        final String cpf = editTextCPF.getText().toString().trim();
+        final String nomeCompleto = editTextNomeCompleto.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
-        final String username = editTextUsername.getText().toString().trim();
-        final String password = editTextPassword.getText().toString().trim();
+        final String nomeDeUsuario = editTextNomeDeUsuario.getText().toString().trim();
+        final String password = editTextSenha.getText().toString().trim();
 
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
@@ -91,8 +96,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("username", username);
+                params.put("cpf", cpf);
+                params.put("nomecompleto", nomeCompleto);
                 params.put("email", email);
+                params.put("nomedeusuario", nomeDeUsuario);
                 params.put("password", password);
                 return params;
             }

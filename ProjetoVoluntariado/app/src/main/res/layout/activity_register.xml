@@ -18,41 +18,65 @@
             android:layout_centerVertical="true"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CPF" />
+
+            <EditText
+                android:id="@+id/editTextCPF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite seu CPF" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome completo" />
+
+            <EditText
+                android:id="@+id/editTextNomeCompleto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite seu nome completo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="email" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite seu email"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome de usuário" />
+
+            <EditText
+                android:id="@+id/editTextNomeDeUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite seu nome de usuário" />
+
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Username" />
+                    android:text="Senha" />
 
                 <EditText
-                    android:id="@+id/editTextUsername"
+                    android:id="@+id/editTextSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter username" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="password" />
-
-                <EditText
-                    android:id="@+id/editTextPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter password"
+                    android:hint="Digite sua senha"
                     android:inputType="textPassword" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="email" />
 
-                <EditText
-                    android:id="@+id/editTextEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter email"
-                    android:inputType="textEmailAddress" />
 
                 <Button
                     android:id="@+id/buttonRegister"
@@ -60,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="Register User" />
         </LinearLayout>
+
 
         <TextView
             android:id="@+id/textViewLogin"

@@ -1,5 +1,7 @@
 package com.example.andre.projetovoluntariado;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,14 +27,7 @@ public class Main2Activity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -41,6 +37,12 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame
+                        , new MeusProjetos())
+                .commit();
     }
 
     @Override
@@ -80,17 +82,44 @@ public class Main2Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentManager fragmentManager = getFragmentManager();
 
         if (id == R.id.nav_meu_perfil) {
             startActivity(new Intent(this, ProfileActivity.class));
         } else if (id == R.id.nav_buscar) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new BuscaComLogin())
+                    .commit();
         } else if (id == R.id.nav_minhas_inscricoes) {
-            startActivity(new Intent(this, LoginActivity.class));
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new MinhasInscricoes())
+                    .commit();
         } else if (id == R.id.nav_cadastro_projetos) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new CadastraProjeto())
+                    .commit();
         } else if (id == R.id.nav_meus_projetos) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new MeusProjetos())
+                    .commit();
+        } else if (id == R.id.nav_admin) {
+            if( SharedPrefManager.getInstance(this).getUserId() == 1) {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame
+                                , new MeuPerfil())
+                        .commit();
+            } else {
+                Toast.makeText(this, "Usuário sem acesso", Toast.LENGTH_LONG).show();
+            }
 
+        } else if (id == R.id.nav_logout) {
+            SharedPrefManager.getInstance(this).logout();
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

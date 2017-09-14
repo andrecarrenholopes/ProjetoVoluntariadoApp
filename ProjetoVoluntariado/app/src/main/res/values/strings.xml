@@ -1,15 +1,14 @@
 <resources>
-    <string name="app_name">ProjetoVoluntariado</string>
+    <string name="app_name" translatable="false">Projeto Voluntariado</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="string_enter_name">Enter your name</string>
     <string name="string_choose_username">Choose your username</string>
     <string name="string_choose_password">Choose your password</string>
     <string name="string_enter_email">Enter your email</string>
-    <string name="button_register">Register</string>
-    <string name="title_activity_main2">Main2Activity</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="button_register">Cadastro</string>
+    <string name="title_activity_main2">Título activity main</string>
+    <string name="navigation_drawer_open">Abrir aba de navegação</string>
+    <string name="navigation_drawer_close">Fechar aba de navegação</string>
 
 </resources>
