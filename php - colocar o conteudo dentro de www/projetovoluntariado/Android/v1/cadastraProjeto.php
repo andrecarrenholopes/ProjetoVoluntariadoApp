@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 		$db = new DbOperations(); 
 
-		$result = $db->createUser( 	$_POST['username'],
+		$result = $db->createInstituicao( 	$_POST['username'],
 									$_POST['password'],
 									$_POST['email']
 								);

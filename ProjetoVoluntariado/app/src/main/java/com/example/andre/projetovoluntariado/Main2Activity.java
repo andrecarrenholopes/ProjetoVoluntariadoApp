@@ -99,7 +99,7 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.nav_cadastro_projetos) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new CadastraProjeto())
+                            , new MenuCadastro())
                     .commit();
         } else if (id == R.id.nav_meus_projetos) {
             fragmentManager.beginTransaction()
