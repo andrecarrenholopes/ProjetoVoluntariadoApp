@@ -6,25 +6,154 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="23dp"
+        android:text="Cadastre sua Instituicao"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="73dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="36dp"
-        android:text="Cadastra Instituicao" />
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="5dp">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp">
 
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome" />
+
+        <EditText
+            android:id="@+id/editTextNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o nome da instituição" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição" />
+
+        <EditText
+            android:id="@+id/editTextDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite uma descriçao da instituição" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rua" />
+
+        <EditText
+            android:id="@+id/editTextRua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite a rua da instituição" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Complementos" />
+
+        <EditText
+            android:id="@+id/editTextComplemento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite os complementos" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bairro" />
+
+        <EditText
+            android:id="@+id/editTextBairro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o bairro" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E-mail" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o e-mail da instituição"
+            android:inputType="textEmailAddress"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logo da instituição" />
+
+        <EditText
+            android:id="@+id/editTextLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Insira o logo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Website" />
+
+        <EditText
+            android:id="@+id/editTextWebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o website da instituição" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cidade" />
+
+        <Spinner
+            android:id="@+id/spinnerCidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado" />
+
+        <Spinner
+            android:id="@+id/spinnerEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar Instituição"
+            android:layout_marginBottom="25dp"/>
 
     </LinearLayout>
 
-
+    </ScrollView>
 
 
 </RelativeLayout>

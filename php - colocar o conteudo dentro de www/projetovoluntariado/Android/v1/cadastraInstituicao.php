@@ -23,8 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		
 		$db = new DbOperations(); 
 		
-		$result = $db->createUser( 	
-									$_POST['cpf'],
+		$result = $db->createInstituicao( 	
 									$_POST['nome'],
 									$_POST['descricao'],
 									$_POST['rua'],

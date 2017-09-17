@@ -15,8 +15,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 			$response['error'] = false; 
 			
 			$response['CPF'] = $user['CPF'];
+			$response['DataNascimento'] = $user['DataNascimento'];
 			$response['Email'] = $user['Email'];
+			$response['ID_Cidade'] = $user['ID_Cidade'];
+			$response['Nome Completo'] = $user['Nome Completo'];
 			$response['NomeDeUsuario'] = $user['NomeDeUsuario'];
+			$response['Papel'] = $user['Papel'];
+			
 		}else{
 			$response['error'] = true; 
 			$response['message'] = "Invalid username or password";			

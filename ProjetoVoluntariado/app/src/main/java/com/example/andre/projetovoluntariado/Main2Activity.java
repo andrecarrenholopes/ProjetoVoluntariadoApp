@@ -85,7 +85,11 @@ public class Main2Activity extends AppCompatActivity
         FragmentManager fragmentManager = getFragmentManager();
 
         if (id == R.id.nav_meu_perfil) {
-            startActivity(new Intent(this, ProfileActivity.class));
+            //startActivity(new Intent(this, ProfileActivity.class));
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new MeuPerfil())
+                    .commit();
         } else if (id == R.id.nav_buscar) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
@@ -107,7 +111,7 @@ public class Main2Activity extends AppCompatActivity
                             , new MeusProjetos())
                     .commit();
         } else if (id == R.id.nav_admin) {
-            if( SharedPrefManager.getInstance(this).getUserId() == 1) {
+            if( SharedPrefManager.getInstance(this).getUserPapel() == 1) {
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame
                                 , new MeuPerfil())

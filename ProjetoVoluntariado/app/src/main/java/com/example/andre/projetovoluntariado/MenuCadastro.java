@@ -46,7 +46,7 @@ public class MenuCadastro extends Fragment implements View.OnClickListener {
             case R.id.buttonCadastraProjeto:
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame
-                                , new CadastraInstituicao())
+                                , new CadastraProjeto())
                         .commit();
                 break;
             case R.id.buttonCadastraVagasDoProjeto:

@@ -79,8 +79,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 SharedPrefManager.getInstance(getApplicationContext())
                                         .userLogin(
                                                 obj.getInt("CPF"),
+                                                obj.getString("DataNascimento"),
+                                                obj.getString("Email"),
+                                                obj.getString("ID_Cidade"),
+                                                obj.getString("Nome Completo"),
                                                 obj.getString("NomeDeUsuario"),
-                                                obj.getString("Email")
+                                                obj.getInt("Papel")
                                         );
                                 //startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                                 startActivity(new Intent(getApplicationContext(), Main2Activity.class));
