@@ -9,4 +9,5 @@ public class Constants {
         public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
         public static final String URL_LOGIN = ROOT_URL+"userLogin.php";
         public static final String URL_CADASTRA_PROJETO = ROOT_URL+"cadastraProjeto.php";
+        public static final String URL_ENDERECO = ROOT_URL+"getEstado.php";
 }
