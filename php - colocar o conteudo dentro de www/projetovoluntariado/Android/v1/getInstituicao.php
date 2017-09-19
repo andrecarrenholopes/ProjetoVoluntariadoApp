@@ -1,4 +1,3 @@
-
 <?php 
 
 require_once '../includes/DbOperations.php';
@@ -6,37 +5,16 @@ require_once '../includes/DbOperations.php';
 $response = array(); 
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-	if(	isset($_POST['nomecompleto']) ) 
-		{
-		//operate the data further 
-		
+	if(	isset($_POST['user']) ) { 
 		$db = new DbOperations(); 
+		$db->getInstituicao( $_POST['username']);
 		
-		//$result = $db->getInstituicao();
-		//echo "  	  #######################################		";
-		//echo $result;
-		
-		$result = $db->getEstado();
-		print_r($result);
-		echo json_encode($result);
-		if($result == 1){
-			$response['error'] = false; 
-			$response['message'] = "User registered successfully";
-		}elseif($result == 2){
-			$response['error'] = true; 
-			$response['message'] = "Some error occurred please try again";			
-		}elseif($result == 0){
-			$response['error'] = true; 
-			$response['message'] = "It seems you are already registered, please choose a different email and username";						
-		}
-
-	}else{
+	}
+	else{
 		$response['error'] = true; 
 		$response['message'] = "Required fields are missing";
 	}
-}else{
-	$response['error'] = true; 
-	$response['message'] = "Invalid Request";
 }
 
 echo json_encode($response);
+

@@ -42,16 +42,8 @@
      
 			$cidade = $result->fetch_all( MYSQLI_ASSOC );
 			
-			echo json_encode($cidade);
-			
-			/*
-			$password = md5($pass);
-			$stmt = $this->con->prepare("SELECT cpf FROM `pessoa` WHERE NomeDeUsuario = ? AND senha = ?");
-			$stmt->bind_param("ss",$username,$password);
-			$stmt->execute();
-			$stmt->store_result(); 
-			return $stmt->num_rows > 0;
-			*/
-		
+			echo json_encode($cidade);	
 		}
+		
+		
 }

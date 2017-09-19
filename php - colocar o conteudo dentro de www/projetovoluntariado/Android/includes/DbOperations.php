@@ -66,11 +66,11 @@
 		}
 
 		private function createInstituicao($nome,$descricao,$rua,$numero,$complemento,$bairro,$email,$logotipo,$website,$id_cidade) {
-			if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
-				return 0; 
-			}else{
-				$password = md5($pass);
-				$stmt = $this->con->prepare("INSERT INTO `pessoa`(`CPF`, `Nome Completo`, `DataNascimento`, `Email`, `Papel`, `NomeDeUsuario`, `Senha`, `ID_Cidade`) VALUES (?,?,null,?,2,?,?,null)");
+			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
+				//return 0; 
+			//}else{
+				
+				$stmt = $this->con->prepare("INSERT INTO `instituicao`(`Nome`, `Descricao`, `Rua`, `Complemento`, `Bairro`, `Email`, `Logotipo`, `Website`, `ID_Cidade`) VALUES ([?,?,?,?,?,?,null,?,?)");
 				
 				$stmt->bind_param("sssss",$cpf, $nomecompleto, $email, $nomedeusuario, $password);
 				
@@ -79,7 +79,7 @@
 				}else{
 					return 2; 
 				}
-			}
+			//}
 		}
 		
 		function getInstituicao(){
@@ -153,5 +153,19 @@
 			return $response;
 			
 			
+		}
+		
+		public function getInstituicao($estado){
+			
+			mysqli_set_charset( $this->con, 'utf8');
+			$query = "SELECT c.Nome, c.ID_Cidade FROM `cidade` c INNER JOIN `estado` e on c.ID_Estado = e.ID_Estado WHERE e.Nome = '";
+			$query .= $estado;
+			$query .= "'";
+			//echo $query;
+			$result = mysqli_query($this->con, $query);
+     
+			$cidade = $result->fetch_all( MYSQLI_ASSOC );
+			
+			echo json_encode($cidade);
 		}
 }

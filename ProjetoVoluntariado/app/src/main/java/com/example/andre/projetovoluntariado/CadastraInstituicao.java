@@ -36,7 +36,7 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
 
     View myView;
     private EditText editTextUsername, editTextEmail, editTextPassword;
-    private String estado = null;
+    private String estado = "São Paulo";
     private String cidade = null;
     private Button buttonRegister;
     private ProgressDialog progressDialog;
@@ -55,6 +55,7 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
         spinnerCidade = (Spinner) myView.findViewById(R.id.spinnerCidade);
 
         getEstado();
+        getCidade();
 
         return myView;
     }
@@ -127,7 +128,9 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 spinnerEstado.setSelection(position);
                 estado = spinnerEstado.getSelectedItem().toString();
-                getCidade();
+                if(cidade != null) {
+                    getCidade();
+                }
             }
 
             @Override
@@ -147,6 +150,7 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
                     @Override
                     public void onResponse(String response) {
                         //progressDialog.dismiss();
+
                         try {
                             JSONArray JA = new JSONArray(response);
                             JSONObject json = null;
@@ -158,6 +162,7 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
                                 nomeCidade[i] = json.getString("Nome");
                                 //id[i]= json.getString("ID_Estado");
                                 listaCidade.add(nomeCidade[i]);
+
                             }
                             spinner_cidade();
                         } catch (JSONException e) {
@@ -172,8 +177,8 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
 
                         Toast.makeText(
                                 myView.getContext(),
-                                //error.getMessage(),
-                                "Teste",
+                                error.getMessage(),
+//                                "Teste1",
                                 Toast.LENGTH_LONG
                         ).show();
                     }
@@ -188,12 +193,12 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
             }
 
         };
-
+        //Toast.makeText(myView.getContext(), "Map", Toast.LENGTH_LONG).show();
         RequestHandler.getInstance(myView.getContext()).addToRequestQueue(stringRequest);
     }
 
     public void spinner_cidade() {
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(myView.getContext(), android.R.layout.simple_spinner_item, nomeEstado);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(myView.getContext(), android.R.layout.simple_spinner_item, nomeCidade);
         spinnerCidade.setAdapter(dataAdapter);
         spinnerCidade.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
