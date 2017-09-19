@@ -65,17 +65,25 @@
 			return $stmt->num_rows > 0; 
 		}
 
-		private function createInstituicao($nome,$descricao,$rua,$numero,$complemento,$bairro,$email,$logotipo,$website,$id_cidade) {
+		public function createInstituicao($nome,$descricao,$rua,$complemento,$bairro,$email,$website,$id_cidade, $id_user) {
 			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
 				//return 0; 
 			//}else{
 				
-				$stmt = $this->con->prepare("INSERT INTO `instituicao`(`Nome`, `Descricao`, `Rua`, `Complemento`, `Bairro`, `Email`, `Logotipo`, `Website`, `ID_Cidade`) VALUES ([?,?,?,?,?,?,null,?,?)");
+				$stmt = $this->con->prepare("INSERT INTO `instituicao`(`Nome`, `Descricao`, `Rua`, `Complemento`, `Bairro`, `Email`, `Logotipo`, `Website`, `ID_Cidade`) VALUES (?,?,?,?,?,?,null,?,?)");
 				
-				$stmt->bind_param("sssss",$cpf, $nomecompleto, $email, $nomedeusuario, $password);
+				$stmt->bind_param("ssssssss",$nome, $descricao, $rua, $complemento, $bairro, $email,$website,$id_cidade);
 				
 				if($stmt->execute()){
-					return 1; 
+					$idInst = $stmt->insert_id;
+					$stmt = $this->con->prepare("INSERT INTO `pessoa-instituicao`(`ID_Pessoa`, `ID_Instituicao`) VALUES (?,?)");
+					$stmt->bind_param("ss",$id_user, $idInst);
+					if($stmt->execute()) {
+						return 1; 
+					}
+					else {
+						return 2;
+					}
 				}else{
 					return 2; 
 				}
@@ -155,6 +163,7 @@
 			
 		}
 		
+		/*
 		public function getInstituicao($estado){
 			
 			mysqli_set_charset( $this->con, 'utf8');
@@ -168,4 +177,5 @@
 			
 			echo json_encode($cidade);
 		}
+		*/
 }

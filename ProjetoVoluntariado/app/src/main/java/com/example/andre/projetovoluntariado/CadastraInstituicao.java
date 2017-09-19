@@ -35,7 +35,7 @@ import java.util.Map;
 public class CadastraInstituicao extends Fragment implements View.OnClickListener{
 
     View myView;
-    private EditText editTextUsername, editTextEmail, editTextPassword;
+    private EditText  editTextNome, editTextDescricao, editTextRua, editTextComplemento, editTextBairro, editTextEmail, editTextWebsite;
     private String estado = "São Paulo";
     private String cidade = null;
     private Button buttonRegister;
@@ -54,15 +54,32 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
         spinnerEstado = (Spinner) myView.findViewById(R.id.spinnerEstado);
         spinnerCidade = (Spinner) myView.findViewById(R.id.spinnerCidade);
 
+        editTextNome = (EditText) myView.findViewById(R.id.editTextNome);
+        editTextDescricao  = (EditText) myView.findViewById(R.id.editTextDescricao);
+        editTextRua = (EditText) myView.findViewById(R.id.editTextRua);
+        editTextComplemento = (EditText) myView.findViewById(R.id.editTextComplemento);
+        editTextBairro = (EditText) myView.findViewById(R.id.editTextBairro);
+        editTextEmail = (EditText) myView.findViewById(R.id.editTextEmail);
+        editTextWebsite = (EditText) myView.findViewById(R.id.editTextWebsite);;
+
+
         getEstado();
         getCidade();
 
+        buttonRegister = (Button) myView.findViewById(R.id.buttonRegister);
+        buttonRegister.setOnClickListener(this);
+
+        progressDialog = new ProgressDialog(myView.getContext());
         return myView;
     }
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.buttonRegister:
+                cadastraInstituicao();
+                break;
+        }
     }
 
     public void getEstado() {
@@ -212,5 +229,63 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
 
             }
         });
+    }
+
+    public void cadastraInstituicao() {
+        //final ArrayList<String> listaCidade = new ArrayList<String>();
+        final String nome = editTextNome.getText().toString().trim();
+        final String descricao = editTextDescricao.getText().toString().trim();
+        final String rua = editTextRua.getText().toString().trim();
+        final String complemento = editTextComplemento.getText().toString().trim();
+        final String bairro = editTextBairro.getText().toString().trim();
+        final String emailInst = editTextEmail.getText().toString().trim();
+        final String website = editTextWebsite.getText().toString().trim();
+        final String id_cidade = "1";
+
+        progressDialog.setMessage("Registrando instituição...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                Constants.URL_CADASTRA_INSTITUICAO,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(myView.getContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
+                        Toast.makeText(myView.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("nome", nome);
+                params.put("descricao", descricao);
+                params.put("rua", rua);
+                params.put("complemento", complemento);
+                params.put("bairro", bairro);
+                params.put("email", emailInst);
+                params.put("website", website);
+                params.put("id_cidade", id_cidade);
+                params.put("id_user", Integer.toString(SharedPrefManager.getInstance(myView.getContext()).getUserId()));
+                return params;
+            }
+        };
+
+
+        RequestHandler.getInstance(myView.getContext()).addToRequestQueue(stringRequest);
     }
 }

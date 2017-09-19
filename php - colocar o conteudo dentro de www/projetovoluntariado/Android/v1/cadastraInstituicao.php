@@ -8,32 +8,27 @@ $response = array();
 if($_SERVER['REQUEST_METHOD']=='POST'){
 	if(
 		isset($_POST['nome']) and 
-			isset($_POST['descricao']) and
-				isset($_POST['rua']) and
-					isset($_POST['numero']) and
-						isset($_POST['complemento']) and
-							isset($_POST['bairro']) and
-								isset($_POST['email']) and
-									isset($_POST['logotipo']) and
-										isset($_POST['website']) and
-											isset($_POST['id_cidade']) 
-											)
+		isset($_POST['descricao']) and
+		isset($_POST['rua']) and
+		isset($_POST['complemento']) and
+		isset($_POST['bairro']) and
+		isset($_POST['email']) and
+		isset($_POST['website']) and
+		isset($_POST['id_cidade']) and
+		isset($_POST['id_user']) )
 		{
 		//operate the data further 
-		
 		$db = new DbOperations(); 
-		
 		$result = $db->createInstituicao( 	
 									$_POST['nome'],
 									$_POST['descricao'],
 									$_POST['rua'],
-									$_POST['numero'],
 									$_POST['complemento'],
 									$_POST['bairro'],
 									$_POST['email'],
-									$_POST['logotipo'],
 									$_POST['website'],
-									$_POST['id_cidade']
+									$_POST['id_cidade'],
+									$_POST['id_user']
 								);
 		if($result == 1){
 			$response['error'] = false; 

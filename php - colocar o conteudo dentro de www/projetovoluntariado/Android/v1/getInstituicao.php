@@ -5,9 +5,9 @@ require_once '../includes/DbOperations.php';
 $response = array(); 
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-	if(	isset($_POST['user']) ) { 
+	if(	isset($_POST['id_user']) ) { 
 		$db = new DbOperations(); 
-		$db->getInstituicao( $_POST['username']);
+		$db->getInstituicao( $_POST['id_user']);
 		
 	}
 	else{
@@ -16,5 +16,5 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	}
 }
 
-echo json_encode($response);
+//echo json_encode($response);
 

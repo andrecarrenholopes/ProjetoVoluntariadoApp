@@ -29,17 +29,6 @@
             android:orientation="vertical"
             android:layout_marginTop="17dp">
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Estado" />
-
-            <Spinner
-                android:id="@+id/spinnerEstado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,26 +43,25 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Instituição" />
+
+            <Spinner
+                android:id="@+id/spinnerInstituicao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Descrição" />
 
             <EditText
                 android:id="@+id/editTextDescricao"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Digite uma descriçao da instituição" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Imagem" />
-
-            <EditText
-                android:id="@+id/editTextRua"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/buttonViewProjeto"
+                android:id="@+id/buttonCadastraProjeto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Criar projeto"
