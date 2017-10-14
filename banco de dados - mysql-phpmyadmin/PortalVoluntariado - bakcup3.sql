@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2017 at 08:43 PM
+-- Generation Time: Sep 18, 2017 at 03:33 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -60,8 +60,7 @@ CREATE TABLE `cidade` (
 
 INSERT INTO `cidade` (`ID_Cidade`, `Nome`, `ID_Estado`) VALUES
 (1, 'São Caetano', 1),
-(2, 'São Paulo - Capital', 1),
-(3, 'Rio de Janeiro - Capital', 2);
+(2, 'São Paulo - Capital', 1);
 
 -- --------------------------------------------------------
 
@@ -128,17 +127,7 @@ CREATE TABLE `instituicao` (
 --
 
 INSERT INTO `instituicao` (`ID_Instituicao`, `Nome`, `Descricao`, `Rua`, `Complemento`, `Bairro`, `Email`, `Logotipo`, `Website`, `ID_Cidade`) VALUES
-(1, 'Instituicao1', 'sda', 'sdfd', 'sdf', 'fsdfs', 'fsdfs', '', 'sdfs', NULL),
-(2, 'inst1', 'inst1', 'inst1', 'inst1', 'inst1', 'inst1', NULL, 'inst1', 1),
-(3, 'instit1', 'aa', 'aa', 'aa', 'ss', 'ss', NULL, 'ss', 1),
-(4, 'instit1', 'aa', 'aa', 'aa', 'ss', 'ss', NULL, 'ss', 2),
-(5, 'inst2', 'aa', 'aa', 'nn', 'nn', 'nn', NULL, 'nn', 1),
-(6, 'inst3', 'aa', 'aa', 'nn', 'nn', 'nn', NULL, 'nn', 1),
-(7, 'instit3', 'aa', 'aa', 'aa', 'ss', 'ss', NULL, 'ss', 2),
-(8, 'instit4', 'aa', 'aa', 'aa', 'ss', 'ss', NULL, 'ss', 2),
-(9, 'instit4', 'aa', 'aa', 'aa', 'ss', 'ss', NULL, 'ss', 2),
-(10, 'instit4', 'aa', 'aa', 'aa', 'ss', 'ss', NULL, 'ss', 2),
-(11, 'inst11', 'as', 'fsdf', 'fsdf', 'fsdf', 'fsdf', NULL, 'fsdf', 1);
+(1, 'Instituicao1', 'sda', 'sdfd', 'sdf', 'fsdfs', 'fsdfs', '', 'sdfs', NULL);
 
 -- --------------------------------------------------------
 
@@ -162,8 +151,7 @@ CREATE TABLE `pessoa` (
 --
 
 INSERT INTO `pessoa` (`CPF`, `Nome Completo`, `DataNascimento`, `Email`, `Papel`, `NomeDeUsuario`, `Senha`, `ID_Cidade`) VALUES
-(1, 'andre1', NULL, 'andre1', 2, 'andre1', '202cb962ac59075b964b07152d234b70', NULL),
-(2, 'andre2', NULL, 'andre2', 2, 'andre2', '202cb962ac59075b964b07152d234b70', NULL);
+(1, 'andre1', NULL, 'andre1', 2, 'andre1', '202cb962ac59075b964b07152d234b70', NULL);
 
 -- --------------------------------------------------------
 
@@ -198,14 +186,6 @@ CREATE TABLE `pessoa-instituicao` (
   `ID_Instituicao` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `pessoa-instituicao`
---
-
-INSERT INTO `pessoa-instituicao` (`ID_Pessoa`, `ID_Instituicao`) VALUES
-(1, 10),
-(1, 11);
-
 -- --------------------------------------------------------
 
 --
@@ -235,15 +215,6 @@ CREATE TABLE `projeto` (
   `ID_Instituicao` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `projeto`
---
-
-INSERT INTO `projeto` (`ID_Projeto`, `Nome`, `Descricao`, `Imagem`, `ID_Pessoa`, `ID_Instituicao`) VALUES
-(4, 'projeto teste', 'dfd', NULL, 1, 10),
-(5, 'projeto teste', 'aa', NULL, 1, 10),
-(6, 'projeto 3', 'hghh', NULL, 1, 10);
-
 -- --------------------------------------------------------
 
 --
@@ -262,18 +233,9 @@ CREATE TABLE `vaga` (
   `Numero` int(5) DEFAULT NULL,
   `Complemento` tinytext,
   `Bairro` tinytext,
-  `Pontual` tinyint(4) DEFAULT NULL,
+  `Pontual` tinyint(4) NOT NULL,
   `ID_Cidade` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `vaga`
---
-
-INSERT INTO `vaga` (`ID_Projeto`, `ID_Vaga`, `Nome`, `Descricao`, `Pre-Requisito`, `Quantidade`, `ADistancia`, `Rua`, `Numero`, `Complemento`, `Bairro`, `Pontual`, `ID_Cidade`) VALUES
-(4, 1, 'vaga teste', 'aa', 'requisito', 1, NULL, 'rua jose', NULL, 'nada', 'maua', NULL, 1),
-(4, 2, 'vaga teste2', 'aa', 'requisito', 1, NULL, 'rua jose', NULL, 'nada', 'maua', NULL, 1),
-(4, 3, 'nome vaga', 'desc', 'requ', 3, NULL, 'rua dsf', NULL, 'fsdfs', 'fsdf', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -423,7 +385,7 @@ ALTER TABLE `causadeinteresse`
 -- AUTO_INCREMENT for table `cidade`
 --
 ALTER TABLE `cidade`
-  MODIFY `ID_Cidade` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Cidade` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `estado`
 --
@@ -438,22 +400,22 @@ ALTER TABLE `habilidade`
 -- AUTO_INCREMENT for table `instituicao`
 --
 ALTER TABLE `instituicao`
-  MODIFY `ID_Instituicao` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_Instituicao` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `CPF` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CPF` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `projeto`
 --
 ALTER TABLE `projeto`
-  MODIFY `ID_Projeto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_Projeto` int(5) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `vaga`
 --
 ALTER TABLE `vaga`
-  MODIFY `ID_Vaga` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Vaga` int(5) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --

@@ -12,5 +12,7 @@
         android:layout_marginLeft="73dp"
         android:layout_marginStart="73dp"
         android:layout_marginTop="36dp"
-        android:text="Minhas Inscriçoes" />
+        android:text="Minhas Inscriçoes"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

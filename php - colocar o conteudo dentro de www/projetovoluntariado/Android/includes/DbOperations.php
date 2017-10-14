@@ -90,23 +90,61 @@
 			//}
 		}
 		
-		function getInstituicao(){
+		function getInstituicao($id_user){
 			
 			// array for json response
 			$response = array();
 			$response = array();
 			 
-			 
 			// Mysql select query
-			$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("SELECT i.ID_Instituicao, i.nome, i.Descricao, i.Rua, i.Complemento, i.Bairro, i.Email, i.Logotipo, i.Website, i.ID_Cidade FROM `instituicao` i INNER JOIN `pessoa-instituicao` pi on i.ID_Instituicao = pi.ID_Instituicao and pi.ID_Pessoa = ?");
+			$stmt->bind_param("s",$id_user);
 			$stmt->execute();
-			$stmt->bind_result($ID_Instituicao, $nome);
-			
+			$stmt->bind_result($ID_Instituicao, $nome, $Descricao, $Rua, $Complemento, $Bairro, $Email, $Logotipo, $Website, $ID_Cidade);
 			
 			while($stmt->fetch()){
 				//pushing fetched data in an array 
 				$temp = [
 				'ID_Instituicao'=>$ID_Instituicao,
+				'nome'=>$nome,
+				'Descricao'=>$Descricao,
+				'Rua'=>$Rua,
+				'Complemento'=>$Complemento,
+				'Bairro'=>$Bairro,
+				'Email'=>$Email,
+				'Logotipo'=>$Logotipo,
+				'Website'=>$Website,
+				'ID_Cidade'=>$ID_Cidade
+				];
+				//pushing the array inside the hero array 
+				array_push($response, $temp);
+			}
+			 
+			// keeping response header to json
+			header('Content-Type: application/json');
+			 
+			// echoing json result
+			echo json_encode($response);
+		}
+		
+		function getProjeto($id_user){
+			
+			// array for json response
+			$response = array();
+			$response = array();
+			 
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("SELECT i.ID_Projeto, i.nome FROM `projeto` i INNER JOIN `pessoa-instituicao` pi on i.ID_Instituicao = pi.ID_Instituicao and pi.ID_Pessoa = ?");
+			$stmt->bind_param("s",$id_user);
+			$stmt->execute();
+			$stmt->bind_result($ID_Projeto, $nome);
+			
+			while($stmt->fetch()){
+				//pushing fetched data in an array 
+				$temp = [
+				'ID_Projeto'=>$ID_Projeto,
 				'nome'=>$nome
 				];
 				//pushing the array inside the hero array 
@@ -119,6 +157,7 @@
 			// echoing json result
 			echo json_encode($response);
 		}
+		
 		
 		function getEstado(){
 			
@@ -161,6 +200,42 @@
 			return $response;
 			
 			
+		}
+		
+		public function createProjeto($nome,$descricao,$id_pessoa,$id_instituicao) {
+			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
+				//return 0; 
+			//}else{
+				
+				$stmt = $this->con->prepare("
+				INSERT INTO `projeto`(`Nome`, `Descricao`, `ID_Pessoa`, `ID_Instituicao`) VALUES ( ?, ?, ?, ?)");
+				
+				$stmt->bind_param("ssss",$nome, $descricao, $id_pessoa, $id_instituicao);
+				
+				if($stmt->execute()){	
+					return 1; 
+				}else{
+					return 2; 
+				}
+			//}
+		}
+		
+		public function createVagasProjeto($nome,$descricao,$quantidade,$requisito,$rua,$complemento,$bairro,$id_cidade, $id_projeto,$id_user) {
+			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
+				//return 0; 
+			//}else{
+				
+				$stmt = $this->con->prepare("INSERT INTO `vaga`(`Nome`, `Descricao`, `Quantidade`, `Pre-Requisito`, `Rua`, `Complemento`, `Bairro`, `ID_Cidade`, `ID_Projeto`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				
+				
+				$stmt->bind_param("sssssssss",$nome,$descricao,$quantidade,$requisito,$rua,$complemento,$bairro,$id_cidade, $id_projeto);
+				
+				if($stmt->execute()){
+					return 1; 
+				}else{
+					return 2; 
+				}
+			//}
 		}
 		
 		/*

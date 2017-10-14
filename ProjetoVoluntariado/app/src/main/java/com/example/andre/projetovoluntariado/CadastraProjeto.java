@@ -42,7 +42,9 @@ public class CadastraProjeto extends Fragment implements View.OnClickListener{
 
     String id[];
     String nomeInstituicao[];
+    int idInstituicao[];
     private String instituicao = "";
+    private int idInstituicaoEscolhido =0 ;
 
     @Nullable
     @Override
@@ -51,13 +53,13 @@ public class CadastraProjeto extends Fragment implements View.OnClickListener{
 
         spinnerInstituicao = (Spinner) myView.findViewById(R.id.spinnerInstituicao);
 
-        editTextNome = (EditText) myView.findViewById(R.id.editTextNome);
+        editTextNome = (EditText) myView.findViewById(R.id.editTextBusca);
         editTextDescricao = (EditText) myView.findViewById(R.id.editTextDescricao);
 
         getInstituicao();
 
-        buttonCadastraProjeto = (Button) myView.findViewById(R.id.buttonRegister);
-//        buttonCadastraProjeto.setOnClickListener(this);
+        buttonCadastraProjeto = (Button) myView.findViewById(R.id.buttonCadastraProjeto);
+        buttonCadastraProjeto.setOnClickListener(this);
 
         progressDialog = new ProgressDialog(myView.getContext());
         return myView;
@@ -68,8 +70,8 @@ public class CadastraProjeto extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonRegister:
-                //cadastraInstituicao();
+            case R.id.buttonCadastraProjeto:
+                cadastraProjeto();
                 break;
         }
     }
@@ -90,14 +92,17 @@ public class CadastraProjeto extends Fragment implements View.OnClickListener{
                             JSONObject json = null;
 
                             nomeInstituicao = new String[JA.length()];
+                            id = new String[JA.length()];
+                            idInstituicao = new int[JA.length()];
 
                             for (int i =0; i < JA.length(); i++) {
                                 json = JA.getJSONObject(i);
-                                nomeInstituicao[i] = json.getString("Nome");
+                                nomeInstituicao[i] = json.getString("nome");
+                                idInstituicao[i] = json.getInt("ID_Instituicao");
                                 //id[i]= json.getString("ID_Estado");
                                 listaInstituicao.add(nomeInstituicao[i]);
                             }
-                            spinner_estado();
+                            spinner_instituicao();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -130,7 +135,7 @@ public class CadastraProjeto extends Fragment implements View.OnClickListener{
         RequestHandler.getInstance(myView.getContext()).addToRequestQueue(stringRequest);
     }
 
-    public void spinner_estado() {
+    public void spinner_instituicao() {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(myView.getContext(), android.R.layout.simple_spinner_item, nomeInstituicao);
         spinnerInstituicao.setAdapter(dataAdapter);
         spinnerInstituicao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -138,6 +143,7 @@ public class CadastraProjeto extends Fragment implements View.OnClickListener{
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 spinnerInstituicao.setSelection(position);
                 instituicao = spinnerInstituicao.getSelectedItem().toString();
+                idInstituicaoEscolhido = spinnerInstituicao.getSelectedItemPosition();
             }
 
             @Override
@@ -145,6 +151,59 @@ public class CadastraProjeto extends Fragment implements View.OnClickListener{
 
             }
         });
+    }
+
+
+    public void cadastraProjeto() {
+        //final ArrayList<String> listaCidade = new ArrayList<String>();
+        final String nome = editTextNome.getText().toString().trim();
+        final String descricao = editTextDescricao.getText().toString().trim();
+
+
+        //Toast.makeText(myView.getContext(), instituicao + " " + idInstituicao[idInstituicaoEscolhido], Toast.LENGTH_LONG).show();
+
+
+
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                Constants.URL_CADASTRA_PROJETO,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(myView.getContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
+                        Toast.makeText(myView.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("nome", nome);
+                params.put("descricao", descricao);
+                params.put("id_instituicao", Integer.toString(idInstituicao[idInstituicaoEscolhido]));
+                params.put("id_pessoa", Integer.toString(SharedPrefManager.getInstance(myView.getContext()).getUserId()));
+                return params;
+            }
+        };
+
+
+        RequestHandler.getInstance(myView.getContext()).addToRequestQueue(stringRequest);
+
     }
 
 }

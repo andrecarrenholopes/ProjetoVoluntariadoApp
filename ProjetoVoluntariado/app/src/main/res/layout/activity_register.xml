@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/linearLayout"
-            android:text="Already Registered? \n Click Here to Login"
+            android:text="Ja está registrado? \n Clique aqui para fazer Login"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 

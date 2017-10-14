@@ -6,13 +6,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="21dp"
+        android:text="Meus Projetos"
+        android:textSize="30dp"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="73dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="36dp"
-        android:text="Meus Projetos" />
+        android:layout_centerHorizontal="true" />
 
     <ListView
         android:id="@+id/listViewProjetos"
@@ -21,6 +19,25 @@
         android:layout_height="230dp"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Instituição"
+        android:layout_marginTop="15dp"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/listViewProjetos"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:id="@+id/spinnerInstituicao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 </RelativeLayout>

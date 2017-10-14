@@ -8,22 +8,33 @@ $response = array();
 if($_SERVER['REQUEST_METHOD']=='POST'){
 	if(
 		isset($_POST['nome']) and 
-			isset($_POST['descricao']) and 
-				isset($_POST['id_pessoa']) and 
-					isset($_POST['id_instituicao']))
+		isset($_POST['descricao']) and
+		isset($_POST['quantidade']) and
+		isset($_POST['requisito']) and
+		isset($_POST['rua']) and
+		isset($_POST['complemento']) and
+		isset($_POST['bairro']) and
+		isset($_POST['id_cidade']) and
+		isset($_POST['id_projeto']) and
+		isset($_POST['id_user']) )
 		{
 		//operate the data further 
-
 		$db = new DbOperations(); 
-
-		$result = $db->createProjeto( 	$_POST['nome'],
+		$result = $db->createVagasProjeto( 	
+									$_POST['nome'],
 									$_POST['descricao'],
-									$_POST['id_pessoa'],
-									$_POST['id_instituicao']
+									$_POST['quantidade'],
+									$_POST['requisito'],
+									$_POST['rua'],
+									$_POST['complemento'],
+									$_POST['bairro'],
+									$_POST['id_cidade'],
+									$_POST['id_projeto'],
+									$_POST['id_user']
 								);
 		if($result == 1){
 			$response['error'] = false; 
-			$response['message'] = "User registered successfully";
+			$response['message'] = "Instituição registrada com sucesso";
 		}elseif($result == 2){
 			$response['error'] = true; 
 			$response['message'] = "Some error occurred please try again";			

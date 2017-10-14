@@ -6,13 +6,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="37dp"
+        android:text="Meu Perfil"
+        android:textSize="30dp"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="73dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="36dp"
-        android:text="Meu Perfil" />
+        android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:layout_centerVertical="true"
