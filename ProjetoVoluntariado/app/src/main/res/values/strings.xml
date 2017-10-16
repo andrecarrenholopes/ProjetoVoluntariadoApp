@@ -10,5 +10,7 @@
     <string name="title_activity_main2">Título activity main</string>
     <string name="navigation_drawer_open">Abrir aba de navegação</string>
     <string name="navigation_drawer_close">Fechar aba de navegação</string>
+    <string name="app_label">Busca</string>
+    <string name="search_hint">Busque aqui</string>
 
 </resources>

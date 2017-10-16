@@ -75,6 +75,12 @@
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
 
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/expandableListView_search">
 
+    </ExpandableListView>
 
 </android.support.constraint.ConstraintLayout>
