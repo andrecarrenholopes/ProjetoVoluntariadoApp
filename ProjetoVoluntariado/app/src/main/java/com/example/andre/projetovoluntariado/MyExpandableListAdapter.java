@@ -21,7 +21,14 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     private ArrayList<ParentRow> parentRowList;
     private ArrayList<ParentRow> originalList;
 
-
+    public MyExpandableListAdapter(Context context
+            , ArrayList<ParentRow> originalList) {
+        this.context = context;
+        this.parentRowList = new ArrayList<>();
+        this.parentRowList.addAll(originalList);
+        this.originalList = new ArrayList<>();
+        this.originalList.addAll(originalList);
+    }
 
     @Override
     public int getGroupCount() { return parentRowList.size();  }

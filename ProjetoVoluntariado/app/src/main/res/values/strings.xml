@@ -12,5 +12,6 @@
     <string name="navigation_drawer_close">Fechar aba de navegação</string>
     <string name="app_label">Busca</string>
     <string name="search_hint">Busque aqui</string>
+    <string name="search">Busca</string>
 
 </resources>
