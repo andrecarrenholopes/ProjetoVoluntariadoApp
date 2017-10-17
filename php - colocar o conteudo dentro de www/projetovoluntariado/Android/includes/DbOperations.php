@@ -128,6 +128,35 @@
 			echo json_encode($response);
 		}
 		
+		function getTodasInstituicoes($nome){
+			
+			// array for json response
+			$response = array();
+			
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("SELECT i.ID_Instituicao, i.nome FROM `instituicao` i WHERE i.nome like ?");
+			$stmt->bind_param("s",$nome);
+			$stmt->execute();
+			$stmt->bind_result($ID_Instituicao, $nome);
+			
+			while($stmt->fetch()){
+				//pushing fetched data in an array 
+				$temp = [
+				'ID_Instituicao'=>$ID_Instituicao,
+				'nome'=>$nome
+				];
+				//pushing the array inside the hero array 
+				array_push($response, $temp);
+			}
+			 
+			// keeping response header to json
+			header('Content-Type: application/json');
+			 
+			// echoing json result
+			echo json_encode($response);
+		}
+		
 		function getProjeto($id_user){
 			
 			// array for json response

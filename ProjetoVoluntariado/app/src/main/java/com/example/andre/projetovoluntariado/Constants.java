@@ -13,5 +13,6 @@ public class Constants {
         public static final String URL_GET_PROJETO = ROOT_URL+"getProjeto.php";
         public static final String URL_CADASTRA_INSTITUICAO = ROOT_URL+"cadastraInstituicao.php";
         public static final String URL_GET_INSTITUICAO = ROOT_URL+"getInstituicao.php";
+        public static final String URL_GET_TODAS_INSTITUICOES = ROOT_URL+"getTodasInstituicoes.php";
         public static final String URL_CADASTRA_VAGAS_PROJETO = ROOT_URL+"cadastraVagasProjeto.php";
 }
