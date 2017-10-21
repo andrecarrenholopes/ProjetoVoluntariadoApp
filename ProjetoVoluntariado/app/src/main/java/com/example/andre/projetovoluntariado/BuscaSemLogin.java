@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -42,7 +43,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     private ArrayList<ParentRow> parentList = new ArrayList<ParentRow>();
     private ArrayList<ParentRow> showTheseParentList = new ArrayList<ParentRow>();
     private MenuItem searchItem;
-
+    private EditText editTextBusca;
 
     private ProgressDialog progressDialog;
     private ArrayList<String> listaInstituicao = new ArrayList<String>();
@@ -59,6 +60,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
         buttonBusca = (Button) findViewById(R.id.buttonBusca);
         buttonBusca.setOnClickListener(this);
 
+        editTextBusca = (EditText) findViewById(R.id.editTextBusca);
         searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
         parentList = new ArrayList<ParentRow>();
@@ -88,7 +90,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     }
 
     private void loadBuscaData() {
-        getInstituicao();
+
 
         parentList.clear();
 
@@ -99,6 +101,8 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
                 ,"Instituição do Juvenal"));
         childRows.add(new ChildRow(R.mipmap.generic_icon
                 ,"Instituição do Pedro"));
+        childRows.add(new ChildRow(R.mipmap.generic_icon
+                ,"Instituição do Chaim"));
         parentRow = new ParentRow("Instituições", childRows);
         parentList.add(parentRow);
 
@@ -118,12 +122,14 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
         parentRow = new ParentRow("Vagas", childRows);
         parentList.add(parentRow);
 
-        myList = (ExpandableListView) findViewById(R.id.expandableListView_search);
-        listAdapter = new MyExpandableListAdapter(BuscaSemLogin.this, parentList);
-
-        myList.setAdapter(listAdapter);
-
         if(!listaInstituicao.isEmpty()) {
+            childRows = new ArrayList<ChildRow>();
+            for (int i = 0; i < listaInstituicao.size() ; i++) {
+                childRows.add(new ChildRow(R.mipmap.generic_icon, listaInstituicao.get(i)));
+            }
+            parentRow = new ParentRow("Instituição do banco", childRows);
+            parentList.add(parentRow);
+
             Toast.makeText(
                     getApplicationContext(),
                     //error.getMessage(),
@@ -134,11 +140,16 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
         else {
             Toast.makeText(
                     getApplicationContext(),
-                    //error.getMessage(),
-                    "listaInstituicao" + nomeInstituicao.length,
+                    "Nenhuma Instituiçao encontrada",
                     Toast.LENGTH_LONG
             ).show();
         }
+
+        myList = (ExpandableListView) findViewById(R.id.expandableListView_search);
+        listAdapter = new MyExpandableListAdapter(BuscaSemLogin.this, parentList);
+
+        myList.setAdapter(listAdapter);
+
     }
 
     private void expandAll() {
@@ -192,7 +203,9 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
             startActivity(new Intent(this, LoginActivity.class));
         }
         if (view == buttonBusca) {
-            loadBuscaData();
+            String itemBuscado = editTextBusca.getText().toString().trim();
+            getInstituicao(itemBuscado);
+
         }
     }
     @Override
@@ -216,7 +229,8 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
         return false;
     }
 
-    public void getInstituicao() {
+    public void getInstituicao(String itemBuscado) {
+        final String finalItemBuscado = itemBuscado;
         listaInstituicao = new ArrayList<String>();
         progressDialog.setMessage("Buscando Dados...");
         progressDialog.show();
@@ -242,6 +256,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
 
                                 listaInstituicao.add(nomeInstituicao[i]);
                             }
+                            loadBuscaData();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -265,7 +280,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("nome", "Inst");
+                params.put("nome", finalItemBuscado);
                 //params.put("password", password);
                 return params;
             }
