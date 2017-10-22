@@ -2,6 +2,7 @@ package com.example.andre.projetovoluntariado;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +83,8 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        ChildRow childRow = (ChildRow) getChild(groupPosition, childPosition);
+        final ChildRow childRow = (ChildRow) getChild(groupPosition, childPosition);
+        final ParentRow parentRow = (ParentRow) getGroup(groupPosition);
 
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater)
@@ -95,6 +97,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
         final TextView childText = (TextView) convertView.findViewById(R.id.child_text);
         childText.setText(childRow.getText().trim());
+        //childText.setId(childRow.getId());
 
         final View finalConvertView = convertView;
 
@@ -109,16 +112,16 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                             , Toast.LENGTH_SHORT).show();
                 }
                 else {
+
                     //v.getContext().startActivity(new Intent(context, RegisterActivity.class));
                     Intent i = new Intent(context, Main2Activity.class);
-                    i.putExtra("nomeInstituicao", childText.getText().toString());
+                    Bundle extras = new Bundle();
+                    extras.putInt("idInstituicao", childRow.getId());
+                    extras.putString("tipoBuscado", parentRow.getName().trim());
+                    i.putExtras(extras);
                     context.startActivity(i);
 
-                    //context.startActivity(new Intent(context, Main2Activity.class));;
-
-                    Toast.makeText(finalConvertView.getContext()
-                            , childText.getText() + SharedPrefManager.getInstance(context).getUserEmail()
-                            , Toast.LENGTH_SHORT).show();
+                    //context.startActivity(new Intent(context, Main2Activity.class));
                 }
             }
         });

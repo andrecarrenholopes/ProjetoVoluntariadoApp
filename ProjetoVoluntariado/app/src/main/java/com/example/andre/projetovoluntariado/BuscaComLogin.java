@@ -58,8 +58,11 @@ public class BuscaComLogin extends Fragment implements View.OnClickListener, Sea
     private ArrayList<String> listaProjeto = new ArrayList<String>();
     private ArrayList<String> listaVagasDosProjeto = new ArrayList<String>();
     String nomeInstituicao[]  = new String[1];
-    String nomeProjeto[] ;
-    String nomeVagasDosProjeto[] ;
+    int idInstituicao[];
+    String nomeProjeto[];
+    int idProjeto[];
+    String nomeVagasDosProjeto[];
+    int idVagasDosProjeto[];
 
 
     @Nullable
@@ -116,7 +119,7 @@ public class BuscaComLogin extends Fragment implements View.OnClickListener, Sea
         if(!listaInstituicao.isEmpty()) {
             childRows = new ArrayList<ChildRow>();
             for (int i = 0; i < listaInstituicao.size() ; i++) {
-                childRows.add(new ChildRow(R.mipmap.generic_icon, listaInstituicao.get(i)));
+                childRows.add(new ChildRow(R.mipmap.generic_icon, listaInstituicao.get(i), idInstituicao[i]));
             }
             parentRow = new ParentRow("Instituições", childRows);
             parentList.add(parentRow);
@@ -138,7 +141,7 @@ public class BuscaComLogin extends Fragment implements View.OnClickListener, Sea
         if(!listaProjeto.isEmpty()) {
             childRows = new ArrayList<ChildRow>();
             for (int i = 0; i < listaProjeto.size() ; i++) {
-                childRows.add(new ChildRow(R.mipmap.generic_icon, listaProjeto.get(i)));
+                childRows.add(new ChildRow(R.mipmap.generic_icon, listaProjeto.get(i), idProjeto[i]));
             }
             parentRow = new ParentRow("Projetos", childRows);
             parentList.add(parentRow);
@@ -160,7 +163,7 @@ public class BuscaComLogin extends Fragment implements View.OnClickListener, Sea
         if(!listaVagasDosProjeto.isEmpty()) {
             childRows = new ArrayList<ChildRow>();
             for (int i = 0; i < listaVagasDosProjeto.size() ; i++) {
-                childRows.add(new ChildRow(R.mipmap.generic_icon, listaVagasDosProjeto.get(i)));
+                childRows.add(new ChildRow(R.mipmap.generic_icon, listaVagasDosProjeto.get(i), idVagasDosProjeto[i]));
             }
             parentRow = new ParentRow("Vagas", childRows);
             parentList.add(parentRow);
@@ -299,7 +302,7 @@ public class BuscaComLogin extends Fragment implements View.OnClickListener, Sea
                             JSONObject json = null;
 
                             nomeInstituicao = new String[JA.length()];
-                            int idInstituicao[] = new int[JA.length()];
+                            idInstituicao = new int[JA.length()];
 
                             for (int i =0; i < JA.length(); i++) {
                                 json = JA.getJSONObject(i);
@@ -360,7 +363,7 @@ public class BuscaComLogin extends Fragment implements View.OnClickListener, Sea
                             JSONObject json = null;
 
                             nomeProjeto = new String[JA.length()];
-                            int idProjeto[] = new int[JA.length()];
+                            idProjeto = new int[JA.length()];
 
                             for (int i =0; i < JA.length(); i++) {
                                 json = JA.getJSONObject(i);
@@ -421,7 +424,7 @@ public class BuscaComLogin extends Fragment implements View.OnClickListener, Sea
                             JSONObject json = null;
 
                             nomeVagasDosProjeto = new String[JA.length()];
-                            int idVagasDosProjeto[] = new int[JA.length()];
+                            idVagasDosProjeto = new int[JA.length()];
 
                             for (int i =0; i < JA.length(); i++) {
                                 json = JA.getJSONObject(i);

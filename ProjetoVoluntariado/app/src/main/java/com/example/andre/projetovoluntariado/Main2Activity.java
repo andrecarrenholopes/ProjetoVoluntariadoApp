@@ -36,15 +36,24 @@ public class Main2Activity extends AppCompatActivity
 
         Intent intent = getIntent();
         if(intent != null && intent.getExtras() != null) {
-            InformacaoInstituicao infoI = new InformacaoInstituicao();
-            Bundle extras = getIntent().getExtras();
-            infoI.setNomeInstituicao( extras.getString("nomeInstituicao"));
+            Bundle extras = intent.getExtras();
 
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , infoI)
-                    .commit();
+            String tipoBuscado = extras.getString("tipoBuscado");
+            int id = extras.getInt("idInstituicao");
+
+            switch (tipoBuscado) {
+                case "Instituições":
+                    loadPerfilInstituicao(id);
+                    break;
+                case "Projetos":
+                    loadPerfilProjeto(id);
+                    break;
+                case "Vagas":
+                    loadPerfilVaga(id);
+                    break;
+            }
+
+
 
         }
         else {
@@ -141,5 +150,47 @@ public class Main2Activity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void loadPerfilInstituicao(int id) {
+        InformacaoInstituicao infoI = new InformacaoInstituicao();
+
+        //Bundle extras = getIntent().getExtras();
+        infoI.setIdInstituicao(id);
+        Toast.makeText(this, "Info da Instituicao: " + id, Toast.LENGTH_LONG).show();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame
+                        , infoI)
+                .commit();
+    }
+
+    private void loadPerfilProjeto(int id) {
+        InformacaoProjeto infoP = new InformacaoProjeto();
+
+        //Bundle extras = getIntent().getExtras();
+        infoP.setIdProjeto(id);
+        //Toast.makeText(this, "Info do Projeto: " + id, Toast.LENGTH_LONG).show();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame
+                        , infoP)
+                .commit();
+    }
+
+    private  void loadPerfilVaga(int id) {
+        InformacaoVaga infoV = new InformacaoVaga();
+
+        //Bundle extras = getIntent().getExtras();
+        infoV.setIdVaga(id);
+        //Toast.makeText(this, "Info da Instituicao: " + id, Toast.LENGTH_LONG).show();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame
+                        , infoV)
+                .commit();
     }
 }

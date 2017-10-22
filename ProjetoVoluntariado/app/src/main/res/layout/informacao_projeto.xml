@@ -7,12 +7,12 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Informações da Instituiçao" />
+        android:text="Informações do Projeto" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Id da Instituiçao: " />
+        android:text="Id do Projeto: " />
 
     <TextView
         android:id="@+id/textViewId"
