@@ -1,12 +1,8 @@
 package com.example.andre.projetovoluntariado;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -38,11 +34,27 @@ public class Main2Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_frame
-                        , new MeusProjetos())
-                .commit();
+        Intent intent = getIntent();
+        if(intent != null && intent.getExtras() != null) {
+            InformacaoInstituicao infoI = new InformacaoInstituicao();
+            Bundle extras = getIntent().getExtras();
+            infoI.setNomeInstituicao( extras.getString("nomeInstituicao"));
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , infoI)
+                    .commit();
+
+        }
+        else {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new BuscaComLogin())
+                    .commit();
+
+        }
     }
 
     @Override

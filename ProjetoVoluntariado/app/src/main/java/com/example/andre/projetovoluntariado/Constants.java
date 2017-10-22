@@ -9,10 +9,15 @@ public class Constants {
         public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
         public static final String URL_LOGIN = ROOT_URL+"userLogin.php";
         public static final String URL_ENDERECO = ROOT_URL+"getEstado.php";
+
         public static final String URL_CADASTRA_PROJETO = ROOT_URL+"cadastraProjeto.php";
-        public static final String URL_GET_PROJETO = ROOT_URL+"getProjeto.php";
         public static final String URL_CADASTRA_INSTITUICAO = ROOT_URL+"cadastraInstituicao.php";
-        public static final String URL_GET_INSTITUICAO = ROOT_URL+"getInstituicao.php";
-        public static final String URL_GET_TODAS_INSTITUICOES = ROOT_URL+"getTodasInstituicoes.php";
         public static final String URL_CADASTRA_VAGAS_PROJETO = ROOT_URL+"cadastraVagasProjeto.php";
+
+        public static final String URL_GET_INSTITUICAO = ROOT_URL+"getInstituicao.php"; //intituição do usuário pra cadastrar projeto
+        public static final String URL_GET_PROJETO = ROOT_URL+"getProjeto.php"; //projeto do usuário pra cadastrar vagas
+
+        public static final String URL_GET_TODAS_INSTITUICOES = ROOT_URL+"getTodasInstituicoes.php";
+        public static final String URL_GET_TODOS_PROJETOS = ROOT_URL+"getTodosProjetos.php";
+        public static final String URL_GET_TODAS_VAGAS_DOS_PROJETOS = ROOT_URL+"getTodasVagasDosProjetos.php";
 }

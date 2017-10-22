@@ -1,6 +1,7 @@
 package com.example.andre.projetovoluntariado;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,14 +97,32 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         childText.setText(childRow.getText().trim());
 
         final View finalConvertView = convertView;
+
+
         childText.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Toast.makeText(finalConvertView.getContext()
-                        , childText.getText()
-                        , Toast.LENGTH_SHORT).show();
+                if(SharedPrefManager.getInstance(context).getUserEmail() == null) {
+                    Toast.makeText(finalConvertView.getContext()
+                            , "Para visualizar mais informações faça Login"
+                            , Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    //v.getContext().startActivity(new Intent(context, RegisterActivity.class));
+                    Intent i = new Intent(context, Main2Activity.class);
+                    i.putExtra("nomeInstituicao", childText.getText().toString());
+                    context.startActivity(i);
+
+                    //context.startActivity(new Intent(context, Main2Activity.class));;
+
+                    Toast.makeText(finalConvertView.getContext()
+                            , childText.getText() + SharedPrefManager.getInstance(context).getUserEmail()
+                            , Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
         return convertView;
     }
 

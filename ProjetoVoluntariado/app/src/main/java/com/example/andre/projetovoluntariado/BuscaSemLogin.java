@@ -47,7 +47,12 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
 
     private ProgressDialog progressDialog;
     private ArrayList<String> listaInstituicao = new ArrayList<String>();
+    private ArrayList<String> listaProjeto = new ArrayList<String>();
+    private ArrayList<String> listaVagasDosProjeto = new ArrayList<String>();
     String nomeInstituicao[]  = new String[1];
+    String nomeProjeto[] ;
+    String nomeVagasDosProjeto[] ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,37 +96,12 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
 
     private void loadBuscaData() {
 
-
         parentList.clear();
 
         ArrayList<ChildRow> childRows = new ArrayList<ChildRow>();
         ParentRow parentRow = null;
 
-        childRows.add(new ChildRow(R.mipmap.generic_icon
-                ,"Instituição do Juvenal"));
-        childRows.add(new ChildRow(R.mipmap.generic_icon
-                ,"Instituição do Pedro"));
-        childRows.add(new ChildRow(R.mipmap.generic_icon
-                ,"Instituição do Chaim"));
-        parentRow = new ParentRow("Instituições", childRows);
-        parentList.add(parentRow);
-
-        childRows = new ArrayList<ChildRow>();
-        childRows.add(new ChildRow(R.mipmap.generic_icon
-                ,"Projeto X"));
-        childRows.add(new ChildRow(R.mipmap.generic_icon
-                ,"Projeto Y"));
-        parentRow = new ParentRow("Projetos", childRows);
-        parentList.add(parentRow);
-
-        childRows = new ArrayList<ChildRow>();
-        childRows.add(new ChildRow(R.mipmap.generic_icon
-                ,"Vaga Y"));
-        childRows.add(new ChildRow(R.mipmap.generic_icon
-                ,"Vaga Z"));
-        parentRow = new ParentRow("Vagas", childRows);
-        parentList.add(parentRow);
-
+        //preenche as instituições
         if(!listaInstituicao.isEmpty()) {
             childRows = new ArrayList<ChildRow>();
             for (int i = 0; i < listaInstituicao.size() ; i++) {
@@ -129,18 +109,60 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
             }
             parentRow = new ParentRow("Instituição do banco", childRows);
             parentList.add(parentRow);
-
+            /*Toast.makeText(
+                    getApplicationContext(),
+                    Integer.toString(listaInstituicao.size()) + " Instituições encontradas",
+                    Toast.LENGTH_LONG
+            ).show();*/
+        }
+        else {
             Toast.makeText(
                     getApplicationContext(),
-                    //error.getMessage(),
-                    "PHP" + listaInstituicao.get(0),
+                    "Nenhuma Instituiçao encontrada",
+                    Toast.LENGTH_LONG
+            ).show();
+        }
+
+        //preenche os projetos
+        if(!listaProjeto.isEmpty()) {
+            childRows = new ArrayList<ChildRow>();
+            for (int i = 0; i < listaProjeto.size() ; i++) {
+                childRows.add(new ChildRow(R.mipmap.generic_icon, listaProjeto.get(i)));
+            }
+            parentRow = new ParentRow("Projetos do banco", childRows);
+            parentList.add(parentRow);
+            /*Toast.makeText(
+                    getApplicationContext(),
+                    Integer.toString(listaInstituicao.size()) + " Projetos encontrados",
+                    Toast.LENGTH_LONG
+            ).show();*/
+        }
+        else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Nenhum Projeto encontrado",
+                    Toast.LENGTH_LONG
+            ).show();
+        }
+
+        //preenche com as vagas
+        if(!listaVagasDosProjeto.isEmpty()) {
+            childRows = new ArrayList<ChildRow>();
+            for (int i = 0; i < listaVagasDosProjeto.size() ; i++) {
+                childRows.add(new ChildRow(R.mipmap.generic_icon, listaVagasDosProjeto.get(i)));
+            }
+            parentRow = new ParentRow("Vagas de Projetos do banco", childRows);
+            parentList.add(parentRow);
+            Toast.makeText(
+                    getApplicationContext(),
+                    Integer.toString(listaInstituicao.size()) + " Vagas em Projetos encontradas",
                     Toast.LENGTH_LONG
             ).show();
         }
         else {
             Toast.makeText(
                     getApplicationContext(),
-                    "Nenhuma Instituiçao encontrada",
+                    "Nenhum Vaga de Projeto encontrada",
                     Toast.LENGTH_LONG
             ).show();
         }
@@ -205,6 +227,9 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
         if (view == buttonBusca) {
             String itemBuscado = editTextBusca.getText().toString().trim();
             getInstituicao(itemBuscado);
+            //getProjeto(itemBuscado);
+            //getVagasDosProjetos(itemBuscado);
+            //loadBuscaData();
 
         }
     }
@@ -256,7 +281,8 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
 
                                 listaInstituicao.add(nomeInstituicao[i]);
                             }
-                            loadBuscaData();
+                            //loadBuscaData();
+                            getProjeto(finalItemBuscado);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -282,6 +308,126 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
                 Map<String, String> params = new HashMap<>();
                 params.put("nome", finalItemBuscado);
                 //params.put("password", password);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+    public void getProjeto(String itemBuscado) {
+        final String finalItemBuscado = itemBuscado;
+        listaProjeto = new ArrayList<String>();
+        progressDialog.setMessage("Buscando Dados...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_TODOS_PROJETOS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONArray JA = new JSONArray(response);
+                            JSONObject json = null;
+
+                            nomeProjeto = new String[JA.length()];
+                            int idProjeto[] = new int[JA.length()];
+
+                            for (int i =0; i < JA.length(); i++) {
+                                json = JA.getJSONObject(i);
+                                nomeProjeto[i] = json.getString("nome");
+                                idProjeto[i] = json.getInt("ID_Projeto");
+
+                                listaProjeto.add(nomeProjeto[i]);
+                            }
+                            //loadBuscaData();
+                            getVagasDosProjetos(finalItemBuscado);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+
+                        Toast.makeText(
+                                getApplicationContext(),
+                                //error.getMessage(),
+                                "Teste",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("nome", finalItemBuscado);
+                //params.put("password", password);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+    public void getVagasDosProjetos(String itemBuscado) {
+        final String finalItemBuscado = itemBuscado;
+        listaVagasDosProjeto = new ArrayList<String>();
+        progressDialog.setMessage("Buscando Dados...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_TODAS_VAGAS_DOS_PROJETOS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONArray JA = new JSONArray(response);
+                            JSONObject json = null;
+
+                            nomeVagasDosProjeto = new String[JA.length()];
+                            int idVagasDosProjeto[] = new int[JA.length()];
+
+                            for (int i =0; i < JA.length(); i++) {
+                                json = JA.getJSONObject(i);
+                                nomeVagasDosProjeto[i] = json.getString("nome");
+                                idVagasDosProjeto[i] = json.getInt("ID_Vaga");
+
+                                listaVagasDosProjeto.add(nomeVagasDosProjeto[i]);
+                            }
+                            loadBuscaData();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+
+                        Toast.makeText(
+                                getApplicationContext(),
+                                //error.getMessage(),
+                                "Teste",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("nome", finalItemBuscado);
+                params.put("pagina", Integer.toString(0));
                 return params;
             }
         };
