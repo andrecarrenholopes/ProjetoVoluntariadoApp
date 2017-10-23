@@ -185,6 +185,7 @@ public class Main2Activity extends AppCompatActivity
 
         //Bundle extras = getIntent().getExtras();
         infoV.setIdVaga(id);
+        //infoV.getVaga();
         //Toast.makeText(this, "Info da Instituicao: " + id, Toast.LENGTH_LONG).show();
 
         FragmentManager fragmentManager = getFragmentManager();

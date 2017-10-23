@@ -21,7 +21,7 @@
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            myView = inflater.inflate(R.layout.informacao_vaga, container, false);
+            myView = inflater.inflate(R.layout.informacao_projeto, container, false);
 
             textViewId = (TextView) myView.findViewById(R.id.textViewId);
             textViewId.setText(Integer.toString(idProjeto));

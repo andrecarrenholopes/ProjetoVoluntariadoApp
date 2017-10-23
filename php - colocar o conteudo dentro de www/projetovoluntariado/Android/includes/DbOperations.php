@@ -33,38 +33,7 @@
 				}
 			}
 		}
-		
-		
-		
-		public function userLogin($username, $pass){
-			$password = md5($pass);
-			$stmt = $this->con->prepare("SELECT cpf FROM `pessoa` WHERE NomeDeUsuario = ? AND senha = ?");
-			$stmt->bind_param("ss",$username,$password);
-			$stmt->execute();
-			$stmt->store_result(); 
-			return $stmt->num_rows > 0; 
-		}
-
-		public function getUserByUsername($username){
-			//$stmt = $this->con->prepare("SELECT * FROM `pessoa` WHERE NomeDeUsuario = ?");
-			$stmt = $this->con->prepare(" SELECT CPF, DataNascimento, Email, if(Nome IS NULL, 'sem cidade', Nome) AS ID_Cidade, `Nome Completo`, 			  NomeDeUsuario, Papel FROM `pessoa` p 
-				LEFT JOIN cidade c on p.ID_Cidade = c.ID_Cidade
-				WHERE NomeDeUsuario = ?");
-
-			$stmt->bind_param("s",$username);
-			$stmt->execute();
-			return $stmt->get_result()->fetch_assoc();
-		}
-		
-
-		private function isUserExist($cpf, $nomedeusuario, $email){
-			$stmt = $this->con->prepare("SELECT cpf FROM `pessoa` WHERE NomeDeUsuario = ? OR email = ? OR cpf = ? ");
-			$stmt->bind_param("sss", $nomedeusuario, $email, $cpf);
-			$stmt->execute(); 
-			$stmt->store_result(); 
-			return $stmt->num_rows > 0; 
-		}
-
+			
 		public function createInstituicao($nome,$descricao,$rua,$complemento,$bairro,$email,$website,$id_cidade, $id_user) {
 			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
 				//return 0; 
@@ -90,6 +59,89 @@
 			//}
 		}
 		
+		public function createProjeto($nome,$descricao,$id_pessoa,$id_instituicao) {
+			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
+				//return 0; 
+			//}else{
+				
+				$stmt = $this->con->prepare("
+				INSERT INTO `projeto`(`Nome`, `Descricao`, `ID_Pessoa`, `ID_Instituicao`) VALUES ( ?, ?, ?, ?)");
+				
+				$stmt->bind_param("ssss",$nome, $descricao, $id_pessoa, $id_instituicao);
+				
+				if($stmt->execute()){	
+					return 1; 
+				}else{
+					return 2; 
+				}
+			//}
+		}
+		
+		public function createVagasProjeto($nome,$descricao,$quantidade,$requisito,$rua,$complemento,$bairro,$id_cidade, $id_projeto,$id_user) {
+			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
+				//return 0; 
+			//}else{
+				
+				$stmt = $this->con->prepare("INSERT INTO `vaga`(`Nome`, `Descricao`, `Quantidade`, `Pre-Requisito`, `Rua`, `Complemento`, `Bairro`, `ID_Cidade`, `ID_Projeto`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				
+				
+				$stmt->bind_param("sssssssss",$nome,$descricao,$quantidade,$requisito,$rua,$complemento,$bairro,$id_cidade, $id_projeto);
+				
+				if($stmt->execute()){
+					return 1; 
+				}else{
+					return 2; 
+				}
+			//}
+		}
+		
+		public function preencheVaga($id_user,$id_vaga) {
+			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
+				//return 0; 
+			//}else{
+				
+				$stmt = $this->con->prepare("INSERT INTO `vaga-pessoa`(`ID_Pessoa`, `ID_Vaga`) VALUES (?, ?)");
+				
+				$stmt->bind_param("ss",$id_user, $id_vaga);
+				
+				if($stmt->execute()){	
+					return 1; 
+				}else{
+					return 2; 
+				}
+		
+		}
+		
+		/*CRUD -> R -> READ */
+		
+		public function userLogin($username, $pass){
+			$password = md5($pass);
+			$stmt = $this->con->prepare("SELECT cpf FROM `pessoa` WHERE NomeDeUsuario = ? AND senha = ?");
+			$stmt->bind_param("ss",$username,$password);
+			$stmt->execute();
+			$stmt->store_result(); 
+			return $stmt->num_rows > 0; 
+		}
+
+		public function getUserByUsername($username){
+			//$stmt = $this->con->prepare("SELECT * FROM `pessoa` WHERE NomeDeUsuario = ?");
+			$stmt = $this->con->prepare(" SELECT CPF, DataNascimento, Email, if(Nome IS NULL, 'sem cidade', Nome) AS ID_Cidade, `Nome Completo`, 			  NomeDeUsuario, Papel FROM `pessoa` p 
+				LEFT JOIN cidade c on p.ID_Cidade = c.ID_Cidade
+				WHERE NomeDeUsuario = ?");
+
+			$stmt->bind_param("s",$username);
+			$stmt->execute();
+			return $stmt->get_result()->fetch_assoc();
+		}
+		
+		private function isUserExist($cpf, $nomedeusuario, $email){
+			$stmt = $this->con->prepare("SELECT cpf FROM `pessoa` WHERE NomeDeUsuario = ? OR email = ? OR cpf = ? ");
+			$stmt->bind_param("sss", $nomedeusuario, $email, $cpf);
+			$stmt->execute(); 
+			$stmt->store_result(); 
+			return $stmt->num_rows > 0; 
+		}
+
 		function getInstituicao($id_user){
 			
 			// array for json response
@@ -116,35 +168,6 @@
 				'Logotipo'=>$Logotipo,
 				'Website'=>$Website,
 				'ID_Cidade'=>$ID_Cidade
-				];
-				//pushing the array inside the hero array 
-				array_push($response, $temp);
-			}
-			 
-			// keeping response header to json
-			header('Content-Type: application/json');
-			 
-			// echoing json result
-			echo json_encode($response);
-		}
-		
-		function getTodasInstituicoes($nome){
-			
-			// array for json response
-			$response = array();
-			
-			// Mysql select query
-			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
-			$stmt = $this->con->prepare("SELECT i.ID_Instituicao, i.nome FROM `instituicao` i WHERE i.nome like ?");
-			$stmt->bind_param("s",$nome);
-			$stmt->execute();
-			$stmt->bind_result($ID_Instituicao, $nome);
-			
-			while($stmt->fetch()){
-				//pushing fetched data in an array 
-				$temp = [
-				'ID_Instituicao'=>$ID_Instituicao,
-				'nome'=>$nome
 				];
 				//pushing the array inside the hero array 
 				array_push($response, $temp);
@@ -187,6 +210,134 @@
 			echo json_encode($response);
 		}
 		
+		function getVaga($id_vaga){
+			
+			// array for json response
+			$response = array();
+			 
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("SELECT p.`Nome` as nomeProjeto , v.`ID_Vaga`, v.`Nome` as nomeVaga, v.`Descricao`, v.`Pre-Requisito`, v.`Quantidade`, v.`Rua`, v.`Complemento`, v.`Bairro`, c.`Nome` as nomeCidade FROM `vaga` v INNER JOIN `projeto` p on p.`ID_Projeto` = v.`ID_Projeto` INNER JOIN `cidade` c on c.`ID_Cidade` = v.`ID_Cidade` WHERE `ID_Vaga` = ?");
+			$stmt->bind_param("s",$id_vaga);
+			$stmt->execute();
+			$stmt->bind_result($nomeProjeto, $ID_Vaga, $nomeVaga, $Descricao, $Requisito, $Quantidade, $Rua, $Complemento, $Bairro, $nomeCidade);
+
+			
+			while($stmt->fetch()){
+				
+				$nomeCidade = mb_convert_encoding($nomeCidade, "UTF-8", "Windows-1252");
+				//pushing fetched data in an array 
+				$temp = [
+				'nomeProjeto'=>$nomeProjeto,
+				'nomeVaga'=>$nomeVaga,
+				'ID_Vaga'=>$ID_Vaga,
+				'Descricao'=>$Descricao,
+				'Pre-Requisito'=>$Requisito,
+				'Quantidade'=>$Quantidade,
+				'Rua'=>$Rua,
+				'Complemento'=>$Complemento,
+				'Bairro'=>$Bairro,
+				'nomeCidade'=>$nomeCidade
+				];
+				//pushing the array inside the hero array 
+				array_push($response, $temp);
+			}
+			 
+			
+			// keeping response header to json
+			header('Content-Type: application/json');
+			
+			// echoing json result
+			echo json_encode($response);
+			
+		}
+		
+		function getTodasInstituicoes($nome){
+			
+			// array for json response
+			$response = array();
+			
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("SELECT i.ID_Instituicao, i.nome FROM `instituicao` i WHERE i.nome like ?");
+			$stmt->bind_param("s",$nome);
+			$stmt->execute();
+			$stmt->bind_result($ID_Instituicao, $nome);
+			
+			while($stmt->fetch()){
+				//pushing fetched data in an array 
+				$temp = [
+				'ID_Instituicao'=>$ID_Instituicao,
+				'nome'=>$nome
+				];
+				//pushing the array inside the hero array 
+				array_push($response, $temp);
+			}
+			 
+			// keeping response header to json
+			header('Content-Type: application/json');
+			 
+			// echoing json result
+			echo json_encode($response);
+		}
+		
+		function getTodosProjetos($nome){
+			
+			// array for json response
+			$response = array();
+			
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("SELECT `ID_Projeto`, `Nome` FROM `projeto` WHERE `Nome` like ?");
+			$stmt->bind_param("s",$nome);
+			$stmt->execute();
+			$stmt->bind_result($ID_Projeto, $nome);
+			
+			while($stmt->fetch()){
+				//pushing fetched data in an array 
+				$temp = [
+				'ID_Projeto'=>$ID_Projeto,
+				'nome'=>$nome
+				];
+				//pushing the array inside the hero array 
+				array_push($response, $temp);
+			}
+			 
+			// keeping response header to json
+			header('Content-Type: application/json');
+			 
+			// echoing json result
+			echo json_encode($response);
+		}
+		
+		function getTodasVagasDosProjetos($nome, $pagina){
+			
+			// array for json response
+			$response = array();
+			
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("SELECT `ID_Vaga`, `Nome` FROM `vaga` WHERE `Nome` like ? limit 20 OFFSET ?");
+			$stmt->bind_param("ss",$nome, $pagina);
+			$stmt->execute();
+			$stmt->bind_result($ID_Vaga, $nome);
+			
+			while($stmt->fetch()){
+				//pushing fetched data in an array 
+				$temp = [
+				'ID_Vaga'=>$ID_Vaga,
+				'nome'=>$nome
+				];
+				//pushing the array inside the hero array 
+				array_push($response, $temp);
+			}
+			 
+			// keeping response header to json
+			header('Content-Type: application/json');
+			 
+			// echoing json result
+			echo json_encode($response);
+		}
 		
 		function getEstado(){
 			
@@ -231,41 +382,6 @@
 			
 		}
 		
-		public function createProjeto($nome,$descricao,$id_pessoa,$id_instituicao) {
-			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
-				//return 0; 
-			//}else{
-				
-				$stmt = $this->con->prepare("
-				INSERT INTO `projeto`(`Nome`, `Descricao`, `ID_Pessoa`, `ID_Instituicao`) VALUES ( ?, ?, ?, ?)");
-				
-				$stmt->bind_param("ssss",$nome, $descricao, $id_pessoa, $id_instituicao);
-				
-				if($stmt->execute()){	
-					return 1; 
-				}else{
-					return 2; 
-				}
-			//}
-		}
-		
-		public function createVagasProjeto($nome,$descricao,$quantidade,$requisito,$rua,$complemento,$bairro,$id_cidade, $id_projeto,$id_user) {
-			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
-				//return 0; 
-			//}else{
-				
-				$stmt = $this->con->prepare("INSERT INTO `vaga`(`Nome`, `Descricao`, `Quantidade`, `Pre-Requisito`, `Rua`, `Complemento`, `Bairro`, `ID_Cidade`, `ID_Projeto`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-				
-				
-				$stmt->bind_param("sssssssss",$nome,$descricao,$quantidade,$requisito,$rua,$complemento,$bairro,$id_cidade, $id_projeto);
-				
-				if($stmt->execute()){
-					return 1; 
-				}else{
-					return 2; 
-				}
-			//}
-		}
 		
 		/*
 		public function getInstituicao($estado){
