@@ -1,5 +1,6 @@
 package com.example.andre.projetovoluntariado;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -52,9 +53,6 @@ public class Main2Activity extends AppCompatActivity
                     loadPerfilVaga(id);
                     break;
             }
-
-
-
         }
         else {
             FragmentManager fragmentManager = getFragmentManager();
@@ -62,7 +60,6 @@ public class Main2Activity extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new BuscaComLogin())
                     .commit();
-
         }
     }
 
@@ -122,10 +119,13 @@ public class Main2Activity extends AppCompatActivity
                             , new MinhasInscricoes())
                     .commit();
         } else if (id == R.id.nav_cadastro_projetos) {
+            /*
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                             , new MenuCadastro())
                     .commit();
+                    */
+            changeFragment(new MenuCadastro());
         } else if (id == R.id.nav_meus_projetos) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
@@ -157,7 +157,7 @@ public class Main2Activity extends AppCompatActivity
 
         //Bundle extras = getIntent().getExtras();
         infoI.setIdInstituicao(id);
-        Toast.makeText(this, "Info da Instituicao: " + id, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Info da Instituicao: " + id, Toast.LENGTH_LONG).show();
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
@@ -193,5 +193,15 @@ public class Main2Activity extends AppCompatActivity
                 .replace(R.id.content_frame
                         , infoV)
                 .commit();
+    }
+
+    public FragmentManager buscaFragmentManager() {
+        FragmentManager fragmentManager = getFragmentManager();
+        return fragmentManager;
+    }
+
+    public void changeFragment(Fragment obj) {
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, obj).commit();
     }
 }

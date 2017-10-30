@@ -1,22 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Informações da Instituiçao" />
+<TextView
+    android:id="@+id/textView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="21dp"
+    android:text="Perfil da Instituiçao"
+    android:textSize="30dp"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Id da Instituiçao: " />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_below="@+id/textView2"
+    android:layout_marginTop="5dp">
 
-    <TextView
-        android:id="@+id/textViewId"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Id" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="17dp">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Informações da Instituiçao"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Id da Instituiçao: "
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Id"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome da Instituiçao: "
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descrição: "
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Endereço: "
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewRua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rua"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complemento: "
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewComplemento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Complemento"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bairro: "
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewBairro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bairro"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: "
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Website: "
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewWebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Website"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cidade: "
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewCidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cidade"
+            android:layout_marginLeft="16dp"/>
+
+
+    </LinearLayout>
+</ScrollView>
+</RelativeLayout>

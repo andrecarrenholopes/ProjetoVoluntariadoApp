@@ -75,10 +75,10 @@ public class BuscaComLogin extends Fragment implements View.OnClickListener, Sea
         parentList = new ArrayList<ParentRow>();
         showTheseParentList = new ArrayList<ParentRow>();
 
-        buttonBusca = (Button) myView.findViewById(R.id.buttonBusca);
+        buttonBusca = (Button) myView.findViewById(R.id.buttonBuscaComLogin);
         buttonBusca.setOnClickListener(this);
 
-        editTextBusca = (EditText) myView.findViewById(R.id.editTextBusca);
+        editTextBusca = (EditText) myView.findViewById(R.id.editTextBuscaComLogin);
         searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
         parentList = new ArrayList<ParentRow>();
