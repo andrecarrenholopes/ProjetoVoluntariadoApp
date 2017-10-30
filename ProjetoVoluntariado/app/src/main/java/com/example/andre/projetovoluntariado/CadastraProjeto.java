@@ -53,7 +53,7 @@ public class CadastraProjeto extends Fragment implements View.OnClickListener{
 
         spinnerInstituicao = (Spinner) myView.findViewById(R.id.spinnerInstituicao);
 
-        editTextNome = (EditText) myView.findViewById(R.id.editTextBuscaComLogin);
+        editTextNome = (EditText) myView.findViewById(R.id.editTextBusca);
         editTextDescricao = (EditText) myView.findViewById(R.id.editTextDescricao);
 
         getInstituicao();

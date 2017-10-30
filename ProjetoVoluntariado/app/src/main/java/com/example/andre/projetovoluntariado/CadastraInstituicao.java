@@ -54,7 +54,7 @@ public class CadastraInstituicao extends Fragment implements View.OnClickListene
         spinnerEstado = (Spinner) myView.findViewById(R.id.spinnerEstado);
         spinnerCidade = (Spinner) myView.findViewById(R.id.spinnerCidade);
 
-        editTextNome = (EditText) myView.findViewById(R.id.editTextNomeInstituicao);
+        editTextNome = (EditText) myView.findViewById(R.id.editTextBusca);
         editTextDescricao  = (EditText) myView.findViewById(R.id.editTextDescricao);
         editTextRua = (EditText) myView.findViewById(R.id.editTextRua);
         editTextComplemento = (EditText) myView.findViewById(R.id.editTextComplemento);

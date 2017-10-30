@@ -33,7 +33,7 @@
                 android:text="Nome do novo projeto" />
 
             <EditText
-                android:id="@+id/editTextBuscaComLogin"
+                android:id="@+id/editTextBusca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Digite o nome do projeto" />

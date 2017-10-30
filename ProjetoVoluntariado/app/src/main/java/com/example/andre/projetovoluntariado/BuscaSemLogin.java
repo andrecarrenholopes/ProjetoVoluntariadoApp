@@ -97,7 +97,6 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     private void loadBuscaData() {
 
         parentList.clear();
-        //parentList = null;
 
         ArrayList<ChildRow> childRows = new ArrayList<ChildRow>();
         ParentRow parentRow = null;
@@ -108,7 +107,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
             for (int i = 0; i < listaInstituicao.size() ; i++) {
                 childRows.add(new ChildRow(R.mipmap.generic_icon, listaInstituicao.get(i)));
             }
-            parentRow = new ParentRow("Instituição", childRows);
+            parentRow = new ParentRow("Instituição do banco", childRows);
             parentList.add(parentRow);
             /*Toast.makeText(
                     getApplicationContext(),
@@ -130,7 +129,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
             for (int i = 0; i < listaProjeto.size() ; i++) {
                 childRows.add(new ChildRow(R.mipmap.generic_icon, listaProjeto.get(i)));
             }
-            parentRow = new ParentRow("Projetos", childRows);
+            parentRow = new ParentRow("Projetos do banco", childRows);
             parentList.add(parentRow);
             /*Toast.makeText(
                     getApplicationContext(),
@@ -152,7 +151,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
             for (int i = 0; i < listaVagasDosProjeto.size() ; i++) {
                 childRows.add(new ChildRow(R.mipmap.generic_icon, listaVagasDosProjeto.get(i)));
             }
-            parentRow = new ParentRow("Vagas de Projetos", childRows);
+            parentRow = new ParentRow("Vagas de Projetos do banco", childRows);
             parentList.add(parentRow);
             Toast.makeText(
                     getApplicationContext(),
@@ -258,7 +257,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     public void getInstituicao(String itemBuscado) {
         final String finalItemBuscado = itemBuscado;
         listaInstituicao = new ArrayList<String>();
-        progressDialog.setMessage("Buscando Instituições...");
+        progressDialog.setMessage("Buscando Dados...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(
@@ -298,7 +297,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
                         Toast.makeText(
                                 getApplicationContext(),
                                 //error.getMessage(),
-                                "Erro na busca de instituição",
+                                "Teste",
                                 Toast.LENGTH_LONG
                         ).show();
                     }
@@ -319,7 +318,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     public void getProjeto(String itemBuscado) {
         final String finalItemBuscado = itemBuscado;
         listaProjeto = new ArrayList<String>();
-        progressDialog.setMessage("Buscando Projetos...");
+        progressDialog.setMessage("Buscando Dados...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(
@@ -359,7 +358,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
                         Toast.makeText(
                                 getApplicationContext(),
                                 //error.getMessage(),
-                                "Erro na busca de projetos",
+                                "Teste",
                                 Toast.LENGTH_LONG
                         ).show();
                     }
@@ -380,7 +379,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     public void getVagasDosProjetos(String itemBuscado) {
         final String finalItemBuscado = itemBuscado;
         listaVagasDosProjeto = new ArrayList<String>();
-        progressDialog.setMessage("Buscando Vagas...");
+        progressDialog.setMessage("Buscando Dados...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(
@@ -418,7 +417,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
                         Toast.makeText(
                                 getApplicationContext(),
                                 //error.getMessage(),
-                                "Erro na busca de vagas",
+                                "Teste",
                                 Toast.LENGTH_LONG
                         ).show();
                     }

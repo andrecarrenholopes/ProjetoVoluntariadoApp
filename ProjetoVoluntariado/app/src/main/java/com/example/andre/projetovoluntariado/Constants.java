@@ -20,7 +20,6 @@ public class Constants {
         public static final String URL_GET_PROJETO = ROOT_URL+"getProjeto.php"; //projeto do usuário pra cadastrar vagas
 
         public static final String URL_GET_VAGA = ROOT_URL+"getVaga.php"; //projeto do usuário pra cadastrar vagas
-        public static final String URL_GET_PERFIL_INSTITUICAO = ROOT_URL+"getPerfilInstituicao.php"; //info de apenas uma instituição
 
         public static final String URL_GET_TODAS_INSTITUICOES = ROOT_URL+"getTodasInstituicoes.php";
         public static final String URL_GET_TODOS_PROJETOS = ROOT_URL+"getTodosProjetos.php";
