@@ -6,52 +6,65 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="37dp"
         android:text="Cadastre suas ONGs e vagas"
         android:textSize="30dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:orientation="vertical"
-        >
+        android:weightSum="1"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <Button
             android:id="@+id/buttonCadastraInstituicao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="292dp"
+            android:layout_height="76dp"
             android:layout_alignLeft="@+id/textView2"
             android:layout_alignStart="@+id/textView2"
             android:layout_below="@+id/textView2"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="25dp"
+            android:background="@drawable/cdtinst"
             android:onClick="onClick"
-            android:text="Cadastra Instituição" />
+            android:text="      Cadastra Instituição"
+            android:textAlignment="textStart" />
 
         <Button
             android:id="@+id/buttonCadastraProjeto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="292dp"
+            android:layout_height="76dp"
             android:layout_alignLeft="@+id/textView2"
             android:layout_alignStart="@+id/textView2"
             android:layout_below="@+id/textView2"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="25dp"
+            android:background="@drawable/cdtprj"
             android:onClick="onClick"
-            android:text="Cadastra projeto" />
+            android:text="      Cadastra projeto"
+            android:textAlignment="viewStart" />
 
         <Button
             android:id="@+id/buttonCadastraVagasDoProjeto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="292dp"
+            android:layout_height="76dp"
             android:layout_alignLeft="@+id/textView2"
             android:layout_alignStart="@+id/textView2"
             android:layout_below="@+id/textView2"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="25dp"
+            android:background="@drawable/cdtvagas"
             android:onClick="onClick"
-            android:text="Cadastra vagas do projeto" />
+            android:text="      Cadastra vagas do projeto"
+            android:textAlignment="textStart" />
 
     </LinearLayout>
 
