@@ -39,7 +39,7 @@
             android:text="Nome" />
 
         <EditText
-            android:id="@+id/editTextBusca"
+            android:id="@+id/editTextNomeInstituicao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Digite o nome da instituição" />

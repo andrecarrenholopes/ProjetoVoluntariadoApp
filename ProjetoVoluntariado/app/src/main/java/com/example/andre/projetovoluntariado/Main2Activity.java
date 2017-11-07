@@ -1,5 +1,6 @@
 package com.example.andre.projetovoluntariado;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +12,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private BuscaComLogin buscaComLogin = new BuscaComLogin();
+    private MinhasInscricoes minhasInscricoes = new MinhasInscricoes();
+    private MenuCadastro menuCadastro = new MenuCadastro();
+    private MeusProjetos meusProjetos = new MeusProjetos();
+    private MeuPerfil meuPerfil = new MeuPerfil();
+    private InformacaoInstituicao infoI = new InformacaoInstituicao();
+    private InformacaoVaga infoV = new InformacaoVaga();
+    private InformacaoProjeto infoP = new InformacaoProjeto();
+
+    private TextView nomeDoUsuarioNavBar, textViewEmailUsuarioNavBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +36,6 @@ public class Main2Activity extends AppCompatActivity
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -34,6 +46,18 @@ public class Main2Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View view = navigationView.getHeaderView(0);
+
+
+        if(! SharedPrefManager.getInstance(this).getNomeCompleto().isEmpty()) {
+            nomeDoUsuarioNavBar = (TextView) view.findViewById(R.id.nomeDoUsuarioNavBar);
+            textViewEmailUsuarioNavBar = (TextView) view.findViewById(R.id.textViewEmailUsuarioNavBar);
+            String nome = SharedPrefManager.getInstance(this).getNomeCompleto();
+            if(nomeDoUsuarioNavBar != null) {
+                nomeDoUsuarioNavBar.setText(nome);
+            }
+                textViewEmailUsuarioNavBar.setText(SharedPrefManager.getInstance(this).getUserEmail());
+        }
         Intent intent = getIntent();
         if(intent != null && intent.getExtras() != null) {
             Bundle extras = intent.getExtras();
@@ -52,17 +76,9 @@ public class Main2Activity extends AppCompatActivity
                     loadPerfilVaga(id);
                     break;
             }
-
-
-
         }
         else {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , new BuscaComLogin())
-                    .commit();
-
+            changeFragment(buscaComLogin);
         }
     }
 
@@ -105,42 +121,23 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
 
+
         if (id == R.id.nav_meu_perfil) {
-            //startActivity(new Intent(this, ProfileActivity.class));
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , new MeuPerfil())
-                    .commit();
+            changeFragment(meuPerfil);
         } else if (id == R.id.nav_buscar) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , new BuscaComLogin())
-                    .commit();
+            changeFragment(buscaComLogin);
         } else if (id == R.id.nav_minhas_inscricoes) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , new MinhasInscricoes())
-                    .commit();
+            changeFragment(minhasInscricoes);
         } else if (id == R.id.nav_cadastro_projetos) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , new MenuCadastro())
-                    .commit();
+            changeFragment(menuCadastro);
         } else if (id == R.id.nav_meus_projetos) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , new MeusProjetos())
-                    .commit();
+            changeFragment(meusProjetos);
         } else if (id == R.id.nav_admin) {
             if( SharedPrefManager.getInstance(this).getUserPapel() == 1) {
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame
-                                , new MeuPerfil())
-                        .commit();
+                changeFragment(meuPerfil);
             } else {
                 Toast.makeText(this, "Usuário sem acesso", Toast.LENGTH_LONG).show();
             }
-
         } else if (id == R.id.nav_logout) {
             SharedPrefManager.getInstance(this).logout();
             finish();
@@ -153,45 +150,25 @@ public class Main2Activity extends AppCompatActivity
     }
 
     private void loadPerfilInstituicao(int id) {
-        InformacaoInstituicao infoI = new InformacaoInstituicao();
-
-        //Bundle extras = getIntent().getExtras();
         infoI.setIdInstituicao(id);
-        Toast.makeText(this, "Info da Instituicao: " + id, Toast.LENGTH_LONG).show();
-
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_frame
-                        , infoI)
-                .commit();
+        changeFragment(infoI);
     }
 
     private void loadPerfilProjeto(int id) {
-        InformacaoProjeto infoP = new InformacaoProjeto();
-
-        //Bundle extras = getIntent().getExtras();
         infoP.setIdProjeto(id);
-        //Toast.makeText(this, "Info do Projeto: " + id, Toast.LENGTH_LONG).show();
-
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_frame
-                        , infoP)
-                .commit();
+        changeFragment(infoP);
     }
 
     private  void loadPerfilVaga(int id) {
-        InformacaoVaga infoV = new InformacaoVaga();
-
-        //Bundle extras = getIntent().getExtras();
         infoV.setIdVaga(id);
-        //infoV.getVaga();
-        //Toast.makeText(this, "Info da Instituicao: " + id, Toast.LENGTH_LONG).show();
+        changeFragment(infoV);
+    }
 
+    public void changeFragment (Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame
-                        , infoV)
+                        , fragment)
                 .commit();
     }
 }

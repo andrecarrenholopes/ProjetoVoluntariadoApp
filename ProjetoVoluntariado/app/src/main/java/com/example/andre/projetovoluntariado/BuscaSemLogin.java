@@ -40,6 +40,16 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     private android.widget.SearchView searchView;
     private MyExpandableListAdapter listAdapter;
     private ExpandableListView myList;
+
+    public ArrayList<ParentRow> getParentList() {
+        return parentList;
+    }
+
+    public void setParentList(ArrayList<ParentRow> parentList) {
+        this.parentList = parentList;
+
+    }
+
     private ArrayList<ParentRow> parentList = new ArrayList<ParentRow>();
     private ArrayList<ParentRow> showTheseParentList = new ArrayList<ParentRow>();
     private MenuItem searchItem;
@@ -107,7 +117,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
             for (int i = 0; i < listaInstituicao.size() ; i++) {
                 childRows.add(new ChildRow(R.mipmap.generic_icon, listaInstituicao.get(i)));
             }
-            parentRow = new ParentRow("Instituição do banco", childRows);
+            parentRow = new ParentRow("Instituição", childRows);
             parentList.add(parentRow);
             /*Toast.makeText(
                     getApplicationContext(),
@@ -129,7 +139,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
             for (int i = 0; i < listaProjeto.size() ; i++) {
                 childRows.add(new ChildRow(R.mipmap.generic_icon, listaProjeto.get(i)));
             }
-            parentRow = new ParentRow("Projetos do banco", childRows);
+            parentRow = new ParentRow("Projetos", childRows);
             parentList.add(parentRow);
             /*Toast.makeText(
                     getApplicationContext(),
@@ -151,7 +161,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
             for (int i = 0; i < listaVagasDosProjeto.size() ; i++) {
                 childRows.add(new ChildRow(R.mipmap.generic_icon, listaVagasDosProjeto.get(i)));
             }
-            parentRow = new ParentRow("Vagas de Projetos do banco", childRows);
+            parentRow = new ParentRow("Vagas de Projetos", childRows);
             parentList.add(parentRow);
             Toast.makeText(
                     getApplicationContext(),
@@ -257,7 +267,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     public void getInstituicao(String itemBuscado) {
         final String finalItemBuscado = itemBuscado;
         listaInstituicao = new ArrayList<String>();
-        progressDialog.setMessage("Buscando Dados...");
+        progressDialog.setMessage("Buscando Instituições...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(
@@ -318,7 +328,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     public void getProjeto(String itemBuscado) {
         final String finalItemBuscado = itemBuscado;
         listaProjeto = new ArrayList<String>();
-        progressDialog.setMessage("Buscando Dados...");
+        progressDialog.setMessage("Buscando Projetos...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(
@@ -379,7 +389,7 @@ public class BuscaSemLogin  extends AppCompatActivity implements View.OnClickLis
     public void getVagasDosProjetos(String itemBuscado) {
         final String finalItemBuscado = itemBuscado;
         listaVagasDosProjeto = new ArrayList<String>();
-        progressDialog.setMessage("Buscando Dados...");
+        progressDialog.setMessage("Buscando Vagas...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(
