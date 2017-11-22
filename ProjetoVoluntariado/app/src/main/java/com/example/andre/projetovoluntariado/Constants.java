@@ -5,7 +5,11 @@ package com.example.andre.projetovoluntariado;
  */
 
 public class Constants {
-        private static final String ROOT_URL = "http://10.0.3.2/projetovoluntariado/Android/v1/";
+        //servidor de produção
+        private static final String ROOT_URL = "http://new-server-bac692.bitnamiapp.com/projetovoluntariado/Android/v1/";
+        //servidor local
+        //private static final String ROOT_URL = "http://10.0.3.2/projetovoluntariado/Android/v1/";
+
         public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
         public static final String URL_LOGIN = ROOT_URL+"userLogin.php";
         public static final String URL_ENDERECO = ROOT_URL+"getEstado.php";

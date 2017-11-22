@@ -57,8 +57,8 @@ public class InformacaoVaga extends Fragment implements View.OnClickListener {
         getVaga();
 
 
-        Toast.makeText(myView.getContext(), "Info da Instituicao: " + Integer.toString(idVaga), Toast.LENGTH_LONG).show();
-        getVaga();
+        //Toast.makeText(myView.getContext(), "Info da Instituicao: " + Integer.toString(idVaga), Toast.LENGTH_LONG).show();
+        //getVaga();
 
         buttonRegisterVaga = (Button) myView.findViewById(R.id.buttonRegisterVaga);
         buttonRegisterVaga.setOnClickListener(this);
@@ -71,6 +71,7 @@ public class InformacaoVaga extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.buttonRegisterVaga:
                 preencheVaga();
+                //Toast.makeText(myView.getContext(), "Obrigado por se inscrever", Toast.LENGTH_LONG).show();
                 break;
             }
 
@@ -191,9 +192,41 @@ public class InformacaoVaga extends Fragment implements View.OnClickListener {
                     @Override
                     public void onResponse(String response) {
                         //progressDialog.dismiss();
+                        Toast.makeText(
+                                myView.getContext(),
+                                //error.getMessage(),
+                                "Erro",
+                                Toast.LENGTH_LONG
+                        ).show();
                         try {
                             JSONArray JA = new JSONArray(response);
                             JSONObject json = null;
+                            if(JA.length() < 0) {
+                                if(JA.getJSONObject(0).getBoolean("error")){
+                                    Toast.makeText(
+                                            myView.getContext(),
+                                            //error.getMessage(),
+                                            "Erro",
+                                            Toast.LENGTH_LONG
+                                    ).show();
+                                }
+                                else {
+                                    Toast.makeText(
+                                            myView.getContext(),
+                                            //error.getMessage(),
+                                            "Você foi cadastrado com sucesso",
+                                            Toast.LENGTH_LONG
+                                    ).show();
+                                }
+                            }
+                            else {
+                                Toast.makeText(
+                                        myView.getContext(),
+                                        //error.getMessage(),
+                                        "Vaga não preenchida",
+                                        Toast.LENGTH_LONG
+                                ).show();
+                            }
 
                             for (int i =0; i < JA.length(); i++) {
                                 json = JA.getJSONObject(i);
@@ -201,7 +234,7 @@ public class InformacaoVaga extends Fragment implements View.OnClickListener {
                                 //listaInstituicao.add(nomeInstituicao[i]);
                             }
                             //spinner_instituicao();
-                            getVaga();
+                            //getVaga();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

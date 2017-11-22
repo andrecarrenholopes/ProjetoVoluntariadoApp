@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText editTextUsername, editTextPassword;
     private Button buttonLogin;
 
-    private TextView textViewRegister;
+    private TextView textViewRegister, textViewVoltaBuscaSemLogin ;
 
     private ProgressDialog progressDialog;
 
@@ -50,13 +50,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         textViewRegister = (TextView) findViewById(R.id.textViewRegister);
+        textViewVoltaBuscaSemLogin = (TextView) findViewById(R.id.textViewVoltaBuscaSemLogin);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
 
         buttonLogin.setOnClickListener(this);
         textViewRegister.setOnClickListener(this);
-
+        textViewVoltaBuscaSemLogin.setOnClickListener(this);
     }
 
     private void userLogin(){
@@ -134,7 +135,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(view == textViewRegister) {
             startActivity(new Intent(this, RegisterActivity.class));
         }
-
-
+        if(view == textViewVoltaBuscaSemLogin) {
+            startActivity(new Intent(this, BuscaSemLogin.class));
+        }
     }
 }

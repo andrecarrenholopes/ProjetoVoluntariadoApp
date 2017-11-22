@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_meu_perfil"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/mperfil"
             android:title="Meu Perfil" />
         <item
             android:id="@+id/nav_buscar"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/bvo"
             android:title="Buscar Vagas e ONGs" />
         <item
             android:id="@+id/nav_minhas_inscricoes"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/mi"
             android:title="Minhas Inscrições" />
         <item
             android:id="@+id/nav_cadastro_projetos"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/cpo"
             android:title="Cadastrar Projetos e ONGs" />
         <item
             android:id="@+id/nav_meus_projetos"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/mpo"
             android:title="Meus Projetos e ONGs" />
     </group>
 
@@ -28,11 +30,11 @@
         <menu>
             <item
                 android:id="@+id/nav_admin"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/admin"
                 android:title="Admin" />
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/logout"
                 android:title="Logout" />
         </menu>
     </item>

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo8">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Cadastra Vagas do Projeto"
-        android:textSize="30dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="Cadastra Vagas do Projeto"
+        android:textColor="@android:color/black"
+        android:textSize="30dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,138 +21,160 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="12dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@+id/textView2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="17dp">
+            android:layout_below="@+id/textView2"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="17dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nome" />
+                android:text="Nome"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/editTextNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:hint="Digite o nome da vaga" />
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Projeto" />
+                android:text="Projeto"
+                android:textColor="@android:color/black" />
 
             <Spinner
                 android:id="@+id/spinnerProjeto"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descrição" />
+                android:text="Descrição"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/editTextDescricao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:hint="Digite uma descriçao da vaga" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pré-requisitos" />
+                android:text="Pré-requisitos"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/editTextRequisito"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:hint="Pré-requisitos da vaga" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Quantidade" />
+                android:text="Quantidade"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/editTextQuantidade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:hint="Quantidade de vagas" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Endereço" />
+                android:text="Endereço"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/editTextRua"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:hint="Digite o local" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Complementos" />
+                android:text="Complementos"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/editTextComplemento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:hint="Digite os complementos" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bairro" />
+                android:text="Bairro"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/editTextBairro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:hint="Digite o bairro" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cidade" />
+                android:text="Cidade"
+                android:textColor="@android:color/black" />
 
             <Spinner
                 android:id="@+id/spinnerCidade"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Estado" />
+                android:text="Estado"
+                android:textColor="@android:color/black" />
 
             <Spinner
                 android:id="@+id/spinnerEstado"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp" />
 
             <Button
                 android:id="@+id/buttonRegister"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Registrar Vaga"
-                android:layout_marginBottom="25dp"/>
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="80dp"
+                android:background="@drawable/botaoregistro"
+                android:text="Registrar Vaga" />
 
         </LinearLayout>
 
     </ScrollView>
-
-
-
 
 
 </RelativeLayout>
