@@ -2,105 +2,244 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:text="Meu Perfil"
-        android:textSize="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <LinearLayout
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/fundo3"
+        android:orientation="vertical">
 
         <TextView
-            android:text="Nome Completo"
-            android:textAlignment="center"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="top|center"
+            android:text="Meu Perfil"
+            android:textSize="30dp" />
 
-        <TextView
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:id="@+id/textViewUserNomeCompleto"
-            android:text="Nome Completo"
-            android:textAlignment="center"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:text="USER NAME"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/pusernome"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/pusernome" />
 
-        <TextView
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:id="@+id/textViewUsername"
-            android:text="USER NAME"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:text="USER EMAIL"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome Completo" />
 
-        <TextView
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:id="@+id/textViewUseremail"
-            android:text="USER EMAIL"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/textViewUserNomeCompleto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome Completo"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-        <TextView
-            android:text="CPF"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            </LinearLayout>
 
-        <TextView
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:id="@+id/textViewUserCPF"
-            android:text="CPF"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        </LinearLayout>
 
-        <TextView
-            android:text="Data de Nascimento"
-            android:textAlignment="center"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:gravity="right"
+            android:orientation="horizontal">
 
-        <TextView
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:id="@+id/textViewUserNascimento"
-            android:text="Nascimento"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:text="Cidade"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="USER NAME" />
 
-        <TextView
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:id="@+id/textViewUserCidade"
-            android:text="Cidade"
-            android:textAlignment="center"
+                <TextView
+                    android:id="@+id/textViewUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:text="USER NAME"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/puserx"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/puserx" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/pemail"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/pemail" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USER EMAIL" />
+
+                <TextView
+                    android:id="@+id/textViewUseremail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USER EMAIL"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:text="CPF" />
+
+                <TextView
+                    android:id="@+id/textViewUserCPF"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:text="CPF"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/pusercpf"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/pusercpf" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/pusernascimento"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/pusernascimento" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data de Nascimento" />
+
+                <TextView
+                    android:id="@+id/textViewUserNascimento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nascimento"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:text="Cidade" />
+
+                <TextView
+                    android:id="@+id/textViewUserCidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:text="Cidade"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/pcidade"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/pcidade" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>
