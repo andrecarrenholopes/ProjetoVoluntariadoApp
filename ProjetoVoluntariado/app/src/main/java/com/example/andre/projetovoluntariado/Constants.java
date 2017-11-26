@@ -6,9 +6,9 @@ package com.example.andre.projetovoluntariado;
 
 public class Constants {
         //servidor de produção
-        private static final String ROOT_URL = "http://new-server-bac692.bitnamiapp.com/projetovoluntariado/Android/v1/";
+        //private static final String ROOT_URL = "http://new-server-bac692.bitnamiapp.com/projetovoluntariado/Android/v1/";
         //servidor local
-        //private static final String ROOT_URL = "http://10.0.3.2/projetovoluntariado/Android/v1/";
+        private static final String ROOT_URL = "http://10.0.3.2/projetovoluntariado/Android/v1/";
 
         public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
         public static final String URL_LOGIN = ROOT_URL+"userLogin.php";
@@ -30,4 +30,8 @@ public class Constants {
         public static final String URL_GET_TODAS_INSTITUICOES = ROOT_URL+"getTodasInstituicoes.php";
         public static final String URL_GET_TODOS_PROJETOS = ROOT_URL+"getTodosProjetos.php";
         public static final String URL_GET_TODAS_VAGAS_DOS_PROJETOS = ROOT_URL+"getTodasVagasDosProjetos.php";
+
+        public static final String URL_GET_INSCRICOES_EM_VAGAS = ROOT_URL+"getInscricoesEmVagas.php";
+
+        public static final String URL_DELETE_CANDIDATURA_EM_VAGAS = ROOT_URL+"deleteCandidaturaEmVaga.php";
 }

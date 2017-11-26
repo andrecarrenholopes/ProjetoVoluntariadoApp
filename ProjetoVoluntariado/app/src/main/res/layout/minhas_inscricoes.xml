@@ -25,7 +25,6 @@
         android:layout_marginTop="5dp">
 
         <LinearLayout
-            android:id="@+id/linearLayoutMinhasInscricoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -35,156 +34,193 @@
             android:layout_marginTop="17dp"
             android:layout_marginBottom="17dp">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/linearLayoutMinhasInscricoes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Selecione a vaga:"
-                android:layout_marginTop="15dp"
-                android:id="@+id/textView5"
+                android:orientation="vertical"
                 android:layout_below="@+id/textViewMinhasInscricoes"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="17dp"
+                android:visibility="gone">
 
-            <Spinner
-                android:id="@+id/spinnerVagasInscritas"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Selecione a vaga:"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/textView5"
+                    android:layout_below="@+id/textViewMinhasInscricoes"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <Spinner
+                    android:id="@+id/spinnerVagasInscritas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:layout_below="@+id/textView5"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Id da Vaga: "
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewIdI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Id"
+                    android:layout_marginLeft="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome da Vaga: "
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewNomeI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nome"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descrição da Vaga: "
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewDescricaoI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Descrição"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pré-Requisitos da Vaga: "
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewRequisitosI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Requisitos"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quantidade de Vagas: "
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewQuantidadeI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Quantidade"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Endereço: "
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewRuaI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rua"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complemento: "
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewComplementoI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Complemento"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bairro: "
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewBairroI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bairro"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cidade: "
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewCidadeI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cidade"
+                    android:layout_marginLeft="16dp"/>
+
+                <Button
+                    android:id="@+id/buttonIrProjeto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ver Informações do Projeto"/>
+
+                <Button
+                    android:id="@+id/buttonIrInstituicao"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ver Informações da Instituição"/>
+
+                <Button
+                    android:id="@+id/buttonCancelarParticipacao"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Cancelar participação"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewNenhumaVaga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
-                android:layout_below="@+id/textView5"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:text="Nenhuma Vaga Disponível"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Id da Vaga: "
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textViewIdI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Id"
-                android:layout_marginLeft="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nome da Vaga: "
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textViewNomeI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nome"
-                android:layout_marginLeft="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descrição da Vaga: "
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textViewDescricaoI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Descrição"
-                android:layout_marginLeft="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pré-Requisitos da Vaga: "
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textViewRequisitosI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Requisitos"
-                android:layout_marginLeft="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Quantidade de Vagas: "
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textViewQuantidadeI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Quantidade"
-                android:layout_marginLeft="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Endereço: "
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textViewRuaI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rua"
-                android:layout_marginLeft="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Complemento: "
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textViewComplementoI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Complemento"
-                android:layout_marginLeft="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bairro: "
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textViewBairroI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bairro"
-                android:layout_marginLeft="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cidade: "
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textViewCidadeI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cidade"
-                android:layout_marginLeft="16dp"/>
-
-            <Button
-                android:id="@+id/buttonRegisterVagaI"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Quero essa vaga"/>
         </LinearLayout>
+
+
+
+
+
     </ScrollView>
 </RelativeLayout>
