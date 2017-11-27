@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo5"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
         android:text="Perfil da Vaga"
-        android:textSize="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textColor="@android:color/black"
+        android:textSize="30dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,154 +27,167 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_below="@+id/textView2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView2"
+            android:layout_marginBottom="17dp"
             android:layout_marginTop="17dp"
-            android:layout_marginBottom="17dp">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="364dp"
-                android:layout_height="wrap_content"
-                android:text="Informações da Vaga"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Id da Vaga: "
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Id da Vaga: "
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Id"
-                android:layout_marginLeft="16dp" />
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Id" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nome da Vaga: "
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Nome da Vaga: "
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nome"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Nome" />
 
             <TextView
+                android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descrição da Vaga: "
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Descrição da Vaga: "
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewDescricao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descrição"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Descrição" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pré-Requisitos da Vaga: "
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Pré-Requisitos da Vaga: "
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewRequisitos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Requisitos"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Requisitos" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quantidade de Vagas: "
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Quantidade de Vagas: "
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewQuantidade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Quantidade"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Quantidade" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Endereço: "
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Endereço: "
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewRua"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rua"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Rua" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Complemento: "
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Complemento: "
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewComplemento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Complemento"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Complemento" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bairro: "
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Bairro: "
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewBairro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bairro"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Bairro" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cidade: "
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Cidade: "
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewCidade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cidade"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Cidade" />
 
             <Button
                 android:id="@+id/buttonRegisterVaga"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Quero essa vaga"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="80dp"
+                android:background="@drawable/botaoregistro"
+                android:text="Quero essa vaga" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

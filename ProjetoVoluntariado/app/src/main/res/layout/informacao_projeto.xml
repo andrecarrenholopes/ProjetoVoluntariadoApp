@@ -1,88 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical" android:layout_width="match_parent"
-android:layout_height="match_parent">
-
-<TextView
-    android:id="@+id/textView2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="21dp"
-    android:text="Informações do Projeto"
-    android:textSize="30dp"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true" />
-
-<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_below="@+id/textView2"
-    android:layout_marginTop="5dp">
+    android:background="@drawable/fundo5"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:text="Informações do Projeto"
+        android:textColor="@android:color/black"
+        android:textSize="30dp" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp"
-        android:layout_marginBottom="17dp">
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="5dp">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="364dp"
-            android:layout_height="wrap_content"
-            android:text="Informações do Projeto"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"/>
+            android:layout_below="@+id/textView2"
+            android:layout_marginBottom="17dp"
+            android:layout_marginTop="17dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nome do Projeto: "
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Nome do Projeto: "
+                android:textColor="@android:color/black" />
 
-        <TextView
-            android:id="@+id/textViewNomeProjeto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nome"
-            android:layout_marginLeft="16dp"/>
+            <TextView
+                android:id="@+id/textViewNomeProjeto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Nome" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Descrição do Projeto: "
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Descrição do Projeto: "
+                android:textColor="@android:color/black" />
 
-        <TextView
-            android:id="@+id/textViewDescricaoProjeto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descrição"
-            android:layout_marginLeft="16dp"/>
+            <TextView
+                android:id="@+id/textViewDescricaoProjeto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:text="Descrição" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Instituição Responsavel: "
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Instituição Responsavel: "
+                android:textColor="@android:color/black" />
 
-        <TextView
-            android:id="@+id/textViewInstituicaoDoProjeto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Instituição"
-            android:layout_marginLeft="16dp"/>
+            <TextView
+                android:id="@+id/textViewInstituicaoDoProjeto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="Instituição" />
 
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -12,78 +12,96 @@
     tools:context=".LoginActivity">
 
 
-<TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-	android:text="Login"
-        android:textSize="30dp"
-        android:layout_above="@+id/linearLayoutLogin"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@android:color/black" />
-	
     <LinearLayout
-        android:id="@+id/linearLayoutLogin"
+        android:id="@+id/linearLayoutp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginTop="90dp"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editTextUsername"
+        <TextView
+            android:id="@+id/textView6"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
-            android:hint="Enter username" />
-
-
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:hint="Enter password"
-            android:inputType="textPassword" />
-
-
-        <Button
-            android:id="@+id/buttonLogin"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:background="@drawable/botaologin"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:text="Login"
-            android:textSize="20sp"/>
+            android:textColor="@android:color/black"
+            android:textSize="30dp" />
 
-    </LinearLayout>    
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
-    <TextView
-        android:id="@+id/textViewRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="75dp"
-        android:background="@drawable/singin4w"
-        android:paddingLeft="10dp"
-        android:paddingTop="17dp"
-        android:text="Registre-se aqui"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
+            <LinearLayout
+                android:id="@+id/linearLayoutLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="false"
+                android:orientation="vertical">
 
-<TextView
-        android:id="@+id/textViewVoltaBuscaSemLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Voltar para a Busca"
-        android:textSize="20sp"
-	    android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/singin4w"
-        android:paddingLeft="10dp"
-        android:paddingTop="17dp"
-        android:textColor="@color/colorPrimary"
-/>
+                <EditText
+                    android:id="@+id/editTextUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:hint="Enter username" />
+
+
+                <EditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:hint="Enter password"
+                    android:inputType="textPassword" />
+
+
+                <Button
+                    android:id="@+id/buttonLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="72dp"
+                    android:background="@drawable/botaologin"
+                    android:text="Login"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textViewRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/singin4w"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="17dp"
+                    android:text="Registre-se aqui"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewVoltaBuscaSemLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/voltar"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="17dp"
+                    android:text="Voltar p/ busca"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
 
 </RelativeLayout>

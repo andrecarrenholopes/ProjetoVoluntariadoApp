@@ -4,15 +4,31 @@
     android:layout_height="match_parent"
     android:background="@drawable/fundo4">
 
+    <LinearLayout
+        android:id="@+id/linearLayoutp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="22dp"
+        android:gravity="center"
         android:text="Cadastre suas ONGs e vagas"
         android:textColor="@android:color/background_dark"
         android:textSize="30dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -23,49 +39,86 @@
         android:layout_centerVertical="true"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/buttonCadastraInstituicao"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayoutum"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView2"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_below="@+id/textView2"
-            android:layout_marginStart="47dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/cdtinst"
-            android:onClick="onClick"
-            android:paddingRight="70dp"
-            android:text="Cadastra Instituição" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="45dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/buttonCadastraProjeto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView2"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_below="@+id/textView2"
-            android:layout_marginStart="47dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/cdtprj"
-            android:onClick="onClick"
-            android:paddingRight="50dp"
-            android:text="Cadastra projeto" />
+            <Button
+                android:id="@+id/buttonCadastraInstituicao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_below="@+id/textView2"
+                android:background="@drawable/cdtinst"
+                android:onClick="onClick"
+                android:paddingRight="70dp"
+                android:text="Cadastra Instituição" />
 
-        <Button
-            android:id="@+id/buttonCadastraVagasDoProjeto"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutdois"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView2"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_below="@+id/textView2"
-            android:layout_marginStart="47dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/cdtvagas"
-            android:onClick="onClick"
-            android:paddingRight="50dp"
-            android:text="Cadastra vagas do projeto" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="45dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonCadastraProjeto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_below="@+id/textView2"
+                android:background="@drawable/cdtprj"
+                android:onClick="onClick"
+                android:paddingRight="50dp"
+                android:text="Cadastra projeto" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayouttres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="45dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonCadastraVagasDoProjeto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_below="@+id/textView2"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/cdtvagas"
+                android:onClick="onClick"
+                android:paddingRight="50dp"
+                android:text="Cadastra vagas do projeto" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
+    </ScrollView>
+
+    </LinearLayout>
 
 </RelativeLayout>

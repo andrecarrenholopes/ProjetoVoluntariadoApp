@@ -11,6 +11,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".RegisterActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -85,25 +90,37 @@
             android:hint="Digite sua senha"
             android:inputType="textPassword" />
 
-
-        <Button
-            android:id="@+id/buttonRegister"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayoutb"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:background="@drawable/botaoregistro"
-            android:text="Register User" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/botaoregistro"
+                android:text="Register User" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/linearLayout"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="40dp"
+            android:text="Ja está registrado? \n Clique aqui para fazer Login"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
     </LinearLayout>
 
+    </ScrollView>
 
-    <TextView
-        android:id="@+id/textViewLogin"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/linearLayout"
-        android:layout_marginTop="40dp"
-        android:text="Ja está registrado? \n Clique aqui para fazer Login"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
 
 </RelativeLayout>

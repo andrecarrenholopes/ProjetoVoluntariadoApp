@@ -52,7 +52,6 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
     int idProjeto[]= new int[1];
     private int idProjetoEscolhido =0;
 
-
     //itens das vagas
     private String[]  nomeVaga, descricaoVaga, requisitoVaga, ruaVaga, complementoVaga, bairroVaga, nomeCidadeVaga;
     private int [] quantidadeVaga,numeroVaga;
@@ -60,6 +59,8 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
     private boolean[] aDistanciaVaga, pontualVaga;
     private int idVagaEscolhida=0;
     private Spinner spinnerVagaMP;
+    private TextView textViewIdMP, textViewNomeMP, textViewDescricaoMP, textViewRequisitosMP, textViewQuantidadeMP, textViewRuaMP, textViewComplementoMP, textViewBairroMP, textViewCidadeMP, textViewNenhumaVagaCadastrada;
+    private LinearLayout linearLayoutVagaMP;
 
     @Nullable
     @Override
@@ -86,7 +87,20 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
         descricaoProjetoMP = (TextView) myView.findViewById(R.id.descricaoProjetoMP);
         textViewNenhumProjetoCadastrado = (TextView) myView.findViewById(R.id.textViewNenhumProjetoCadastrado);
 
+        //vagas
         spinnerVagaMP = (Spinner) myView.findViewById(R.id.spinnerVagaMP);
+        textViewIdMP = (TextView) myView.findViewById(R.id.textViewIdMP);
+        textViewNomeMP = (TextView) myView.findViewById(R.id.textViewNomeMP);
+        textViewDescricaoMP = (TextView) myView.findViewById(R.id.textViewDescricaoMP);
+        textViewRequisitosMP = (TextView) myView.findViewById(R.id.textViewRequisitosMP);
+        textViewQuantidadeMP = (TextView) myView.findViewById(R.id.textViewQuantidadeMP);
+        textViewRuaMP = (TextView) myView.findViewById(R.id.textViewRuaMP);
+        textViewComplementoMP = (TextView) myView.findViewById(R.id.textViewComplementoMP);
+        textViewBairroMP = (TextView) myView.findViewById(R.id.textViewBairroMP);
+        textViewCidadeMP = (TextView) myView.findViewById(R.id.textViewCidadeMP);
+        textViewNenhumaVagaCadastrada = (TextView) myView.findViewById(R.id.textViewNenhumaVagaCadastrada);
+        linearLayoutVagaMP = (LinearLayout) myView.findViewById(R.id.linearLayoutVagaMP);
+
         getInstituicao();
 
         spinnerProjeto = (Spinner) myView.findViewById(R.id.spinnerProjeto);
@@ -329,7 +343,6 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
         });
     }
 
-
     public void getVagasByProjeto() {
         final ArrayList<String> listaInstituicao = new ArrayList<String>();
 
@@ -388,14 +401,14 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
                                     }
                                     //listaInstituicao.add(nomeInstituicao[i]);
                                 }
-                                //textViewNenhumaVaga.setVisibility(myView.GONE);
-                                //linearLayoutMinhasInscricoes.setVisibility(myView.VISIBLE);
+                                textViewNenhumaVagaCadastrada.setVisibility(myView.GONE);
+                                linearLayoutVagaMP.setVisibility(myView.VISIBLE);
                                 spinnerVagas();
                                 //iniciaTextView();*/
                             }
                             else {
-                                //textViewNenhumaVaga.setVisibility(myView.VISIBLE);
-                                //linearLayoutMinhasInscricoes.setVisibility(myView.GONE);
+                                textViewNenhumaVagaCadastrada.setVisibility(myView.VISIBLE);
+                                linearLayoutVagaMP.setVisibility(myView.GONE);
                             }
 
                         } catch (JSONException e) {
@@ -430,29 +443,34 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
         RequestHandler.getInstance(myView.getContext()).addToRequestQueue(stringRequest);
     }
 
-
     public void spinnerVagas() {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(myView.getContext(), android.R.layout.simple_spinner_item, nomeVaga);
         spinnerVagaMP.setAdapter(dataAdapter);
         spinnerVagaMP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-                Toast.makeText(
-                        myView.getContext(),
-                        //error.getMessage(),
-                        "spinner vaga",
-                        Toast.LENGTH_SHORT
-                ).show();
                 spinnerVagaMP.setSelection(position);
                 //instituicao = spinnerProjeto.getSelectedItem().toString();
                 idVagaEscolhida = spinnerVagaMP.getSelectedItemPosition();
-
+                atualizaInfoVaga();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
+    }
+
+    public void atualizaInfoVaga() {
+        textViewIdMP.setText(Integer.toString(idVaga[idVagaEscolhida]));
+        textViewNomeMP.setText(nomeVaga[idVagaEscolhida]);
+        textViewDescricaoMP.setText(descricaoVaga[idVagaEscolhida]);
+        textViewRequisitosMP.setText(requisitoVaga[idVagaEscolhida]);
+        textViewQuantidadeMP.setText(Integer.toString(quantidadeVaga[idVagaEscolhida]));
+        textViewRuaMP.setText(ruaVaga[idVagaEscolhida]);
+        textViewComplementoMP.setText(complementoVaga[idVagaEscolhida]);
+        textViewBairroMP.setText(bairroVaga[idVagaEscolhida]);
+        textViewCidadeMP.setText(nomeCidadeVaga[idVagaEscolhida]);
     }
 
     @Override
