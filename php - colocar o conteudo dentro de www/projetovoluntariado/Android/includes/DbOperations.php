@@ -99,17 +99,16 @@
 			//if( $this->instituicaoExist($nome, $nomedeusuario,$email) ){
 				//return 0; 
 			//}else{
-				
-				$stmt = $this->con->prepare("INSERT INTO `vaga-pessoa`(`ID_Pessoa`, `ID_Vaga`) VALUES (?, ?)");
-				
-				$stmt->bind_param("ss",$id_user, $id_vaga);
-				
-				if($stmt->execute()){	
-					return 1; 
-				}else{
-					return 2; 
-				}
-		
+			$stmt = $this->con->prepare("INSERT INTO `vaga-pessoa`(`ID_Pessoa`, `ID_Vaga`) VALUES (?, ?)");
+			
+			$stmt->bind_param("ss",$id_user, $id_vaga);
+			
+			if($stmt->execute()){	
+				return 1; 
+			}else{
+				return 2; 
+			}
+			
 		}
 		
 		/*CRUD -> R -> READ */
@@ -254,7 +253,7 @@
 			echo json_encode($response);
 		}
 		
-		function getProjeto($id_user){
+		function getProjeto($id_user, $id_instituicao){
 			
 			// array for json response
 			$response = array();
@@ -262,16 +261,17 @@
 			 
 			// Mysql select query
 			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
-			$stmt = $this->con->prepare("SELECT i.ID_Projeto, i.nome FROM `projeto` i INNER JOIN `pessoa-instituicao` pi on i.ID_Instituicao = pi.ID_Instituicao and pi.ID_Pessoa = ?");
-			$stmt->bind_param("s",$id_user);
+			$stmt = $this->con->prepare("SELECT i.ID_Projeto, i.nome, i.`Descricao` FROM `projeto` i INNER JOIN `pessoa-instituicao` pi on i.ID_Instituicao = pi.ID_Instituicao and pi.ID_Pessoa = ? and pi.ID_Instituicao = ?");
+			$stmt->bind_param("ss",$id_user, $id_instituicao);
 			$stmt->execute();
-			$stmt->bind_result($ID_Projeto, $nome);
+			$stmt->bind_result($ID_Projeto, $nome, $descricao);
 			
 			while($stmt->fetch()){
 				//pushing fetched data in an array 
 				$temp = [
 				'ID_Projeto'=>$ID_Projeto,
-				'nome'=>$nome
+				'nome'=>$nome,
+				'Descricao'=>$descricao
 				];
 				//pushing the array inside the hero array 
 				array_push($response, $temp);
@@ -293,6 +293,53 @@
 			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
 			$stmt = $this->con->prepare("SELECT p.`Nome` as nomeProjeto , v.`ID_Vaga`, v.`Nome` as nomeVaga, v.`Descricao`, v.`Pre-Requisito`, v.`Quantidade` - (SELECT count(*) FROM `vaga-pessoa` WHERE `ID_Vaga` = ?) as `Quantidade`, v.`Rua`, v.`Complemento`, v.`Bairro`, c.`Nome` as nomeCidade FROM `vaga` v INNER JOIN `projeto` p on p.`ID_Projeto` = v.`ID_Projeto` INNER JOIN `cidade` c on c.`ID_Cidade` = v.`ID_Cidade` WHERE `ID_Vaga` = ?");
 			$stmt->bind_param("ss",$id_vaga,$id_vaga);
+			$stmt->execute();
+			$stmt->bind_result($nomeProjeto, $ID_Vaga, $nomeVaga, $Descricao, $Requisito, $Quantidade, $Rua, $Complemento, $Bairro, $nomeCidade);
+
+			
+			while($stmt->fetch()){
+				
+				$nomeCidade = mb_convert_encoding($nomeCidade, "UTF-8", "Windows-1252");
+				//pushing fetched data in an array 
+				$temp = [
+				'nomeProjeto'=>$nomeProjeto,
+				'nomeVaga'=>$nomeVaga,
+				'ID_Vaga'=>$ID_Vaga,
+				'Descricao'=>$Descricao,
+				'Pre-Requisito'=>$Requisito,
+				'Quantidade'=>$Quantidade,
+				'Rua'=>$Rua,
+				'Complemento'=>$Complemento,
+				'Bairro'=>$Bairro,
+				'nomeCidade'=>$nomeCidade
+				];
+				//pushing the array inside the hero array 
+				array_push($response, $temp);
+			}
+			 
+			
+			// keeping response header to json
+			header('Content-Type: application/json');
+			
+			// echoing json result
+			echo json_encode($response);
+			
+		}
+		
+		function getVagaByProjeto($id_projeto){
+			
+			// array for json response
+			$response = array();
+			 
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("
+				SELECT p.`Nome` as nomeProjeto , v.`ID_Vaga`, v.`Nome` as nomeVaga, v.`Descricao`, v.`Pre-Requisito`, v.`Quantidade` - (SELECT count(*) FROM `vaga-pessoa` WHERE `ID_Vaga` = v.`ID_Vaga`) as `Quantidade`, v.`Rua`, v.`Complemento`, v.`Bairro`, c.`Nome` as nomeCidade
+				FROM `vaga` v 
+				INNER JOIN `projeto` p on p.`ID_Projeto` = v.`ID_Projeto`
+				INNER JOIN `cidade` c on c.`ID_Cidade` = v.`ID_Cidade`
+				WHERE  p.`ID_Projeto` = ?");
+			$stmt->bind_param("s",$id_projeto);
 			$stmt->execute();
 			$stmt->bind_result($nomeProjeto, $ID_Vaga, $nomeVaga, $Descricao, $Requisito, $Quantidade, $Rua, $Complemento, $Bairro, $nomeCidade);
 
@@ -501,6 +548,31 @@
 			 
 			// echoing json result
 			echo json_encode($response);
+		}
+		
+		function getQuantidadeVagas($id_vaga) {
+			// array for json response
+			$response = array();
+			
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("			
+				SELECT DISTINCT (v.`ID_Vaga`) as idVaga, v.`Quantidade` - (SELECT count(*) FROM `vaga-pessoa` vp WHERE vp.`ID_Vaga` = idVaga) as vagasRestantes 
+				FROM `vaga` v
+				WHERE v.`ID_Vaga` = ? ");
+			$stmt->bind_param("s",$id_vaga);
+			$stmt->execute();
+			
+			$stmt->bind_result($ID_Vaga, $vagasRestantes);
+			while($stmt->fetch()){
+				if($vagasRestantes > 0) {
+					return $vagasRestantes;
+				}
+				else{
+					return 0;
+				}					
+			}
+			return 0;
 		}
 		
 		/*CRUD -> U -> UPDATE */
