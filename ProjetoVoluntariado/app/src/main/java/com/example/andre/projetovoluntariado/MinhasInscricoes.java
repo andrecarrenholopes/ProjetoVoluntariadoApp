@@ -111,6 +111,7 @@ public class MinhasInscricoes extends Fragment implements View.OnClickListener{
         }
     }
 
+
     public void getInscricoesEmVagas() {
         final ArrayList<String> listaInstituicao = new ArrayList<String>();
 
@@ -230,6 +231,7 @@ public class MinhasInscricoes extends Fragment implements View.OnClickListener{
         });
     }
 
+
     public void iniciaTextView() {
         textViewIdI = (TextView) myView.findViewById(R.id.textViewIdI);
         textViewNomeI = (TextView) myView.findViewById(R.id.textViewNomeI);
@@ -281,6 +283,8 @@ public class MinhasInscricoes extends Fragment implements View.OnClickListener{
                             JSONObject jsonObject = new JSONObject(response);
                             //JSONArray JA = new JSONArray(response);
                             //JSONObject json = null;
+                            getInscricoesEmVagas();
+
                             Toast.makeText(
                                     myView.getContext(),
                                     //error.getMessage(),

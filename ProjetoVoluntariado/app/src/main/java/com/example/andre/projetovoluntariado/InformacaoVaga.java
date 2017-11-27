@@ -192,32 +192,18 @@ public class InformacaoVaga extends Fragment implements View.OnClickListener {
                     @Override
                     public void onResponse(String response) {
                         //progressDialog.dismiss();
-                        Toast.makeText(
-                                myView.getContext(),
-                                //error.getMessage(),
-                                "Erro",
-                                Toast.LENGTH_LONG
-                        ).show();
+
                         try {
-                            JSONArray JA = new JSONArray(response);
-                            JSONObject json = null;
-                            if(JA.length() < 0) {
-                                if(JA.getJSONObject(0).getBoolean("error")){
-                                    Toast.makeText(
-                                            myView.getContext(),
-                                            //error.getMessage(),
-                                            "Erro",
-                                            Toast.LENGTH_LONG
-                                    ).show();
-                                }
-                                else {
-                                    Toast.makeText(
-                                            myView.getContext(),
-                                            //error.getMessage(),
-                                            "Você foi cadastrado com sucesso",
-                                            Toast.LENGTH_LONG
-                                    ).show();
-                                }
+                            //JSONArray JA = new JSONArray(response);
+                            JSONObject json = new JSONObject(response);
+
+                            if(!json.getBoolean("error")) {
+                                Toast.makeText(
+                                        myView.getContext(),
+                                        //error.getMessage(),
+                                        "Você se inscreveu na vaga",
+                                        Toast.LENGTH_LONG
+                                ).show();
                             }
                             else {
                                 Toast.makeText(
@@ -227,14 +213,8 @@ public class InformacaoVaga extends Fragment implements View.OnClickListener {
                                         Toast.LENGTH_LONG
                                 ).show();
                             }
-
-                            for (int i =0; i < JA.length(); i++) {
-                                json = JA.getJSONObject(i);
-
-                                //listaInstituicao.add(nomeInstituicao[i]);
-                            }
                             //spinner_instituicao();
-                            //getVaga();
+                            getVaga();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

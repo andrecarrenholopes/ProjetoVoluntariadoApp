@@ -31,6 +31,7 @@ public class Constants {
         public static final String URL_GET_TODOS_PROJETOS = ROOT_URL+"getTodosProjetos.php";
         public static final String URL_GET_TODAS_VAGAS_DOS_PROJETOS = ROOT_URL+"getTodasVagasDosProjetos.php";
 
+        public static final String URL_GET_VAGA_BY_PROJETO = ROOT_URL+"getVagaByProjeto.php";
         public static final String URL_GET_INSCRICOES_EM_VAGAS = ROOT_URL+"getInscricoesEmVagas.php";
 
         public static final String URL_DELETE_CANDIDATURA_EM_VAGAS = ROOT_URL+"deleteCandidaturaEmVaga.php";
