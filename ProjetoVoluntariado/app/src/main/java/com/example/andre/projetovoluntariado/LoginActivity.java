@@ -84,7 +84,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 obj.getString("ID_Cidade"),
                                                 obj.getString("Nome Completo"),
                                                 obj.getString("NomeDeUsuario"),
-                                                obj.getInt("Papel")
+                                                obj.getInt("Papel"),
+                                                obj.getString("cpfDeVerdade")
                                         );
                                 //startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                                 startActivity(new Intent(getApplicationContext(), Main2Activity.class));

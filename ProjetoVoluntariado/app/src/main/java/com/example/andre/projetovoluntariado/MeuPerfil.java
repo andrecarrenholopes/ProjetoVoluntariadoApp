@@ -30,13 +30,11 @@ public class MeuPerfil extends Fragment {
         textViewUserCPF = (TextView) myView.findViewById(R.id.textViewUserCPF);
         textViewUserNascimento = (TextView) myView.findViewById(R.id.textViewUserNascimento);
 
-
-
         textViewUserEmail.setText(SharedPrefManager.getInstance(myView.getContext()).getUserEmail());
         textViewUsername.setText(SharedPrefManager.getInstance(myView.getContext()).getUserName());
         textViewUserNomeCompleto.setText(SharedPrefManager.getInstance(myView.getContext()).getNomeCompleto());
         textViewUserCidade.setText(SharedPrefManager.getInstance(myView.getContext()).getUserCidade());
-        textViewUserCPF.setText(Integer.toString(SharedPrefManager.getInstance(myView.getContext()).getUserCPF()));
+        textViewUserCPF.setText(SharedPrefManager.getInstance(myView.getContext()).getCpfDeVerdade());
         textViewUserNascimento.setText(SharedPrefManager.getInstance(myView.getContext()).getUserNascimento());
         return myView;
     }

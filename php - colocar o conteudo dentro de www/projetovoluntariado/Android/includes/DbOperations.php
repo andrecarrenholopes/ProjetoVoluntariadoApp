@@ -22,9 +22,9 @@
 				return 0; 
 			}else{
 				$password = md5($pass);
-				$stmt = $this->con->prepare("INSERT INTO `pessoa`(`CPF`, `Nome Completo`, `DataNascimento`, `Email`, `Papel`, `NomeDeUsuario`, `Senha`, `ID_Cidade`) VALUES (?,?,null,?,2,?,?,null)");
+				$stmt = $this->con->prepare("INSERT INTO `pessoa`(`Nome Completo`, `DataNascimento`, `Email`, `Papel`, `NomeDeUsuario`, `Senha`, `ID_Cidade`,`cpfDeVerdade`) VALUES (?,null,?,2,?,?,null,?)");
 				
-				$stmt->bind_param("sssss",$cpf, $nomecompleto, $email, $nomedeusuario, $password);
+				$stmt->bind_param("sssss", $nomecompleto, $email, $nomedeusuario, $password,$cpf);
 				
 				if($stmt->execute()){
 					return 1; 
@@ -124,7 +124,7 @@
 
 		public function getUserByUsername($username){
 			//$stmt = $this->con->prepare("SELECT * FROM `pessoa` WHERE NomeDeUsuario = ?");
-			$stmt = $this->con->prepare(" SELECT CPF, DataNascimento, Email, if(Nome IS NULL, 'sem cidade', Nome) AS ID_Cidade, `Nome Completo`, 			  NomeDeUsuario, Papel FROM `pessoa` p 
+			$stmt = $this->con->prepare(" SELECT CPF, DataNascimento, Email, if(Nome IS NULL, 'sem cidade', Nome) AS ID_Cidade, `Nome Completo`, NomeDeUsuario, Papel, cpfDeVerdade FROM `pessoa` p 
 				LEFT JOIN cidade c on p.ID_Cidade = c.ID_Cidade
 				WHERE NomeDeUsuario = ?");
 
@@ -134,7 +134,7 @@
 		}
 		
 		private function isUserExist($cpf, $nomedeusuario, $email){
-			$stmt = $this->con->prepare("SELECT cpf FROM `pessoa` WHERE NomeDeUsuario = ? OR email = ? OR cpf = ? ");
+			$stmt = $this->con->prepare("SELECT cpf FROM `pessoa` WHERE NomeDeUsuario = ? OR email = ? OR cpfDeVerdade = ? ");
 			$stmt->bind_param("sss", $nomedeusuario, $email, $cpf);
 			$stmt->execute(); 
 			$stmt->store_result(); 
@@ -594,7 +594,23 @@
 			else {
 				return false;
 			}
-
 		}
 		
+		function deleteVaga($id_vaga) {
+			// array for json response
+			$response = array();
+			
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("			
+				DELETE FROM `vaga` WHERE `ID_Vaga` = ? ");
+			$stmt->bind_param("s",$id_vaga);
+			$stmt->execute() 
+			if($stmt->affected_rows >= 1)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 }

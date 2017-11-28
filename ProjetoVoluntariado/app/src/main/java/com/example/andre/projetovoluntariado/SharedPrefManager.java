@@ -5,13 +5,7 @@ package com.example.andre.projetovoluntariado;
  */
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.Settings;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 
 /**
  * Created by Belal on 26/11/16.
@@ -27,9 +21,10 @@ public class SharedPrefManager {
     private static final String KEY_NASCIMENTO = "usernascimento";
     private static final String KEY_USER_EMAIL = "useremail";
     private static final String KEY_ID_CIDADE = "usercidade";
-    private static final String KEY_NOME_COMPLETO = "useremail";
+    private static final String KEY_NOME_COMPLETO = "usercompleto";
     private static final String KEY_NOME_DE_USUARIO = "username";
     private static final String KEY_USER_PAPEL = "papel";
+    private static final String KEY_USER_CPF_DE_VERDADE = "cpfDeVerdade";
 
     private SharedPrefManager(Context context) {
         mCtx = context;
@@ -43,7 +38,7 @@ public class SharedPrefManager {
     }
 
 
-    public boolean userLogin(int cpf, String dataNascimento, String email, String id_cidade, String nomeCompleto, String nomeDeUsuario, int papel){
+    public boolean userLogin(int cpf, String dataNascimento, String email, String id_cidade, String nomeCompleto, String nomeDeUsuario, int papel, String cpfDeVerdade){
 
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -55,6 +50,7 @@ public class SharedPrefManager {
         editor.putString(KEY_NOME_COMPLETO, nomeCompleto);
         editor.putString(KEY_NOME_DE_USUARIO, nomeDeUsuario);
         editor.putInt(KEY_USER_PAPEL, papel);
+        editor.putString(KEY_USER_CPF_DE_VERDADE, cpfDeVerdade);
 
         editor.apply();
 
@@ -116,6 +112,9 @@ public class SharedPrefManager {
         return sharedPreferences.getInt(KEY_USER_PAPEL, 0);
     }
 
-
+    public String getCpfDeVerdade(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_USER_CPF_DE_VERDADE, null);
+    }
 
 }

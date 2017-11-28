@@ -113,9 +113,42 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        if (view == buttonRegister)
+        if ((view == buttonRegister)&&(validate())){
             registerUser();
+        }
         if(view == textViewLogin)
             startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+
+        String vcpf = editTextCPF.getText().toString().trim();
+        String vnomeCompleto = editTextNomeCompleto.getText().toString().trim();
+        String vemail = editTextEmail.getText().toString().trim();
+        String vnomeDeUsuario = editTextNomeDeUsuario.getText().toString().trim();
+        String vpassword = editTextSenha.getText().toString().trim();
+
+        if((vcpf.isEmpty())||(vcpf.length()!=11)||(vcpf.contains("^[0-9]"))){
+            Toast.makeText(this,"CPF inválido",Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+        if((vnomeCompleto.isEmpty())||(vnomeCompleto.contains("^[a-Z]"))){
+            Toast.makeText(this,"Nome inválido",Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+        if((vemail.isEmpty())||(vemail.contains("^[a-Z@]"))){
+            Toast.makeText(this,"Email inválido",Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+        if(vnomeDeUsuario.isEmpty()){
+            Toast.makeText(this,"Nome usuario inválido",Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+        if(vpassword.isEmpty()){
+            Toast.makeText(this,"Senha inválida",Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+        return valid;
     }
 }

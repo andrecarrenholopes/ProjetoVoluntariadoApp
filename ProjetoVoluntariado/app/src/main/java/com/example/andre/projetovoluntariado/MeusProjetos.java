@@ -1,6 +1,7 @@
 package com.example.andre.projetovoluntariado;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -61,6 +63,7 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
     private Spinner spinnerVagaMP;
     private TextView textViewIdMP, textViewNomeMP, textViewDescricaoMP, textViewRequisitosMP, textViewQuantidadeMP, textViewRuaMP, textViewComplementoMP, textViewBairroMP, textViewCidadeMP, textViewNenhumaVagaCadastrada;
     private LinearLayout linearLayoutVagaMP;
+    private Button buttonAtualizaVaga, buttonDeleteVaga;
 
     @Nullable
     @Override
@@ -100,6 +103,8 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
         textViewCidadeMP = (TextView) myView.findViewById(R.id.textViewCidadeMP);
         textViewNenhumaVagaCadastrada = (TextView) myView.findViewById(R.id.textViewNenhumaVagaCadastrada);
         linearLayoutVagaMP = (LinearLayout) myView.findViewById(R.id.linearLayoutVagaMP);
+        buttonAtualizaVaga = (Button) myView.findViewById(R.id.buttonAtualizaVaga);
+        buttonDeleteVaga = (Button) myView.findViewById(R.id.buttonDeleteVaga);
 
         getInstituicao();
 
@@ -475,7 +480,25 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
 
     @Override
     public void onClick(View v) {
-
+        FragmentManager fragmentManager = getFragmentManager();
+        switch (v.getId()) {
+            case R.id.buttonAtualizaVaga:
+                Toast.makeText(
+                        myView.getContext(),
+                        //error.getMessage(),
+                        "Atualiza",
+                        Toast.LENGTH_LONG
+                ).show();
+                break;
+            case R.id.buttonDeleteVaga:
+                Toast.makeText(
+                        myView.getContext(),
+                        //error.getMessage(),
+                        "Deleta",
+                        Toast.LENGTH_LONG
+                ).show();
+                break;
+        }
     }
 
 

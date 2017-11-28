@@ -21,6 +21,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 			$response['Nome Completo'] = $user['Nome Completo'];
 			$response['NomeDeUsuario'] = $user['NomeDeUsuario'];
 			$response['Papel'] = $user['Papel'];
+			$response['cpfDeVerdade'] = $user['cpfDeVerdade'];
 			
 		}else{
 			$response['error'] = true; 
