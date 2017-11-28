@@ -53,11 +53,7 @@ public class Main2Activity extends AppCompatActivity
             nomeDoUsuarioNavBar = (TextView) view.findViewById(R.id.nomeDoUsuarioNavBar);
             textViewEmailUsuarioNavBar = (TextView) view.findViewById(R.id.textViewEmailUsuarioNavBar);
             String nome = SharedPrefManager.getInstance(this).getNomeCompleto();
-            Toast.makeText(
-                    getApplicationContext(),
-                    SharedPrefManager.getInstance(this).getUserEmail(),
-                    Toast.LENGTH_LONG
-            ).show();
+
             if(nomeDoUsuarioNavBar != null) {
                 nomeDoUsuarioNavBar.setText(nome);
             }

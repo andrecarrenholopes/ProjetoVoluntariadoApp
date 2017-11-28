@@ -605,8 +605,44 @@
 			$stmt = $this->con->prepare("			
 				DELETE FROM `vaga` WHERE `ID_Vaga` = ? ");
 			$stmt->bind_param("s",$id_vaga);
-			$stmt->execute() 
-			if($stmt->affected_rows >= 1)) {
+			
+			if($stmt->execute() && ($stmt->affected_rows >= 1)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		
+		function deleteProjeto($id_projeto) {
+			// array for json response
+			$response = array();
+			
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("			
+				DELETE FROM `projeto` WHERE `ID_Projeto` = ? ");
+			$stmt->bind_param("s",$id_projeto);
+			
+			if($stmt->execute() && ($stmt->affected_rows >= 1)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		
+		function deleteInstituicao($id_instituicao) {
+			// array for json response
+			$response = array();
+			
+			// Mysql select query
+			//$stmt = $this->con->prepare("SELECT ID_Instituicao, nome FROM `instituicao`");
+			$stmt = $this->con->prepare("			
+				DELETE FROM `instituicao` WHERE `ID_Instituicao` = ? ");
+			$stmt->bind_param("s",$id_instituicao);
+			
+			if($stmt->execute() && ($stmt->affected_rows >= 1)) {
 				return true;
 			}
 			else {

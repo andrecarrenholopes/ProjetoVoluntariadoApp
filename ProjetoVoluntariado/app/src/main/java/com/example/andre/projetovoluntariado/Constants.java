@@ -35,4 +35,7 @@ public class Constants {
         public static final String URL_GET_INSCRICOES_EM_VAGAS = ROOT_URL+"getInscricoesEmVagas.php";
 
         public static final String URL_DELETE_CANDIDATURA_EM_VAGAS = ROOT_URL+"deleteCandidaturaEmVaga.php";
+        public static final String URL_DELETE_VAGA = ROOT_URL+"deleteVaga.php";
+        public static final String URL_DELETE_PROJETO = ROOT_URL+"deleteProjeto.php";
+        public static final String URL_DELETE_INSTITUICAO = ROOT_URL+"deleteInstituicao.php";
 }

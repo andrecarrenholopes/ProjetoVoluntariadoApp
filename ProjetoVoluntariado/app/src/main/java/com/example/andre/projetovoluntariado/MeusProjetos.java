@@ -45,6 +45,7 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
     private int idInstituicaoEscolhido =0 ;
     private TextView textViewInstituicaNome, textViewInstituicaoRua, textViewInstituicaoComplemento, textViewInstituicaoBairro, textViewInstituicaoEmail, textViewInstituicaoWebsite, textViewInstituicaoCidade, textViewInstituicaoDescricao, textViewNenhumaIntituicaoCadastrada;
     private Spinner spinnerInstituicao;
+    private Button buttonAtualizaInstituicao, buttonDeleteInstituicao;
 
     //itens do projeto
     private TextView descricaoProjetoMP, textViewNenhumProjetoCadastrado;
@@ -53,6 +54,7 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
     String nomeProjeto[], descricaoProjeto[];
     int idProjeto[]= new int[1];
     private int idProjetoEscolhido =0;
+    private Button buttonAtualizaProjeto, buttonDeleteProjeto;
 
     //itens das vagas
     private String[]  nomeVaga, descricaoVaga, requisitoVaga, ruaVaga, complementoVaga, bairroVaga, nomeCidadeVaga;
@@ -79,6 +81,10 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
         textViewInstituicaoWebsite = (TextView) myView.findViewById(R.id.textViewInstituicaoWebsite) ;
         textViewInstituicaoCidade = (TextView) myView.findViewById(R.id.textViewInstituicaoCidade);
         textViewInstituicaoDescricao = (TextView) myView.findViewById(R.id.textViewInstituicaoDescricao);
+        buttonAtualizaInstituicao = (Button) myView.findViewById(R.id.buttonAtualizaInstituicao);
+        buttonDeleteInstituicao = (Button) myView.findViewById(R.id.buttonDeleteInstituicao);
+        buttonAtualizaInstituicao.setOnClickListener(this);
+        buttonDeleteInstituicao.setOnClickListener(this);
 
         textViewNenhumaIntituicaoCadastrada = (TextView) myView.findViewById(R.id.textViewNenhumaIntituicaoCadastrada);
         linearLayoutInstituicaoCadastrada = (LinearLayout) myView.findViewById((R.id.linearLayoutInstituicaoCadastrada));
@@ -87,8 +93,13 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
         spinnerInstituicao = (Spinner) myView.findViewById(R.id.spinnerInstituicao);
         //ListView lista = (ListView) myView.findViewById(R.id.listViewProjetos);
 
+        //projeto
         descricaoProjetoMP = (TextView) myView.findViewById(R.id.descricaoProjetoMP);
         textViewNenhumProjetoCadastrado = (TextView) myView.findViewById(R.id.textViewNenhumProjetoCadastrado);
+        buttonAtualizaProjeto = (Button) myView.findViewById(R.id.buttonAtualizaProjeto);
+        buttonDeleteProjeto = (Button) myView.findViewById(R.id.buttonDeleteProjeto);
+        buttonAtualizaProjeto.setOnClickListener(this);
+        buttonDeleteProjeto.setOnClickListener(this);
 
         //vagas
         spinnerVagaMP = (Spinner) myView.findViewById(R.id.spinnerVagaMP);
@@ -105,6 +116,8 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
         linearLayoutVagaMP = (LinearLayout) myView.findViewById(R.id.linearLayoutVagaMP);
         buttonAtualizaVaga = (Button) myView.findViewById(R.id.buttonAtualizaVaga);
         buttonDeleteVaga = (Button) myView.findViewById(R.id.buttonDeleteVaga);
+        buttonAtualizaVaga.setOnClickListener(this);
+        buttonDeleteVaga.setOnClickListener(this);
 
         getInstituicao();
 
@@ -478,25 +491,198 @@ public class MeusProjetos extends Fragment implements View.OnClickListener  {
         textViewCidadeMP.setText(nomeCidadeVaga[idVagaEscolhida]);
     }
 
+    public void deleteVaga() {
+        final ArrayList<String> listaInstituicao = new ArrayList<String>();
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_DELETE_VAGA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //progressDialog.dismiss();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            getVagasByProjeto();
+                            Toast.makeText(
+                                    myView.getContext(),
+                                    //error.getMessage(),
+                                    "Vaga deletada!",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (Exception e) {
+                            Toast.makeText(
+                                    myView.getContext(),
+                                    //error.getMessage(),
+                                    "Erro ao deletar vaga!",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //progressDialog.dismiss();
+                        Toast.makeText(
+                                myView.getContext(),
+                                //error.getMessage(),
+                                "Erro",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_vaga", Integer.toString(idVaga[idVagaEscolhida]));
+                //params.put("password", password);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(myView.getContext()).addToRequestQueue(stringRequest);
+    }
+
+    public void deleteProjeto() {
+        final ArrayList<String> listaInstituicao = new ArrayList<String>();
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_DELETE_PROJETO,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //progressDialog.dismiss();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            getProjeto();
+                            Toast.makeText(
+                                    myView.getContext(),
+                                    //error.getMessage(),
+                                    "Projeto deletado!",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (Exception e) {
+                            Toast.makeText(
+                                    myView.getContext(),
+                                    //error.getMessage(),
+                                    "Erro ao deletar projeto!",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //progressDialog.dismiss();
+                        Toast.makeText(
+                                myView.getContext(),
+                                //error.getMessage(),
+                                "Erro",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_projeto", Integer.toString(idProjeto[idProjetoEscolhido]));
+                //params.put("password", password);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(myView.getContext()).addToRequestQueue(stringRequest);
+    }
+
+    public void deleteInstituicao() {
+        final ArrayList<String> listaInstituicao = new ArrayList<String>();
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_DELETE_INSTITUICAO,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //progressDialog.dismiss();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            getInstituicao();
+                            Toast.makeText(
+                                    myView.getContext(),
+                                    //error.getMessage(),
+                                    "Instituição deletada!",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (Exception e) {
+                            Toast.makeText(
+                                    myView.getContext(),
+                                    //error.getMessage(),
+                                    "Erro ao deletar instituição!",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //progressDialog.dismiss();
+                        Toast.makeText(
+                                myView.getContext(),
+                                //error.getMessage(),
+                                "Erro",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_instituicao", Integer.toString(idInstituicao[idInstituicaoEscolhido]));
+                //params.put("password", password);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(myView.getContext()).addToRequestQueue(stringRequest);
+    }
+
     @Override
     public void onClick(View v) {
         FragmentManager fragmentManager = getFragmentManager();
         switch (v.getId()) {
-            case R.id.buttonAtualizaVaga:
-                Toast.makeText(
-                        myView.getContext(),
-                        //error.getMessage(),
-                        "Atualiza",
-                        Toast.LENGTH_LONG
-                ).show();
+            case R.id.buttonAtualizaVaga:;
                 break;
             case R.id.buttonDeleteVaga:
-                Toast.makeText(
-                        myView.getContext(),
-                        //error.getMessage(),
-                        "Deleta",
-                        Toast.LENGTH_LONG
-                ).show();
+                deleteVaga();
+                getVagasByProjeto();
+                break;
+            case R.id.buttonAtualizaProjeto:
+                break;
+            case R.id.buttonDeleteProjeto:
+                deleteProjeto();
+                getProjeto();
+                break;
+            case R.id.buttonAtualizaInstituicao:
+                break;
+            case R.id.buttonDeleteInstituicao:
+                deleteInstituicao();
+                getInstituicao();
                 break;
         }
     }
