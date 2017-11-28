@@ -139,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             valid = false;
         }
         //if((vemail.isEmpty())||(vemail.contains("^[a-Z@]"))){
-        if(isValidEmail(vemail)){
+        if((isValidEmail(vemail))&&(vemail.contains("[.]"))){
             Toast.makeText(this,"Email inválido",Toast.LENGTH_SHORT).show();
             valid = false;
         }
