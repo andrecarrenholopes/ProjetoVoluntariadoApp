@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo1">
 
     <TextView
         android:id="@+id/textViewMinhasInscricoes"
@@ -9,12 +11,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="73dp"
         android:layout_marginStart="73dp"
         android:layout_marginTop="36dp"
         android:text="Minhas Inscriçoes"
-        android:textSize="30dp"
-        android:layout_centerHorizontal="true" />
+        android:textColor="@android:color/black"
+        android:textSize="30dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,199 +30,276 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@+id/textViewMinhasInscricoes"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewMinhasInscricoes"
+            android:layout_marginBottom="17dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="17dp"
-            android:layout_marginBottom="17dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/linearLayoutMinhasInscricoes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/textViewMinhasInscricoes"
+                android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="17dp"
+                android:layout_below="@+id/textViewMinhasInscricoes"
                 android:layout_marginBottom="17dp"
+                android:layout_marginTop="17dp"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Selecione a vaga:"
-                    android:layout_marginTop="15dp"
-                    android:id="@+id/textView5"
-                    android:layout_below="@+id/textViewMinhasInscricoes"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textViewMinhasInscricoes"
+                    android:layout_marginTop="15dp"
+                    android:text="Selecione a vaga:"
+                    android:textColor="@android:color/black" />
 
                 <Spinner
                     android:id="@+id/spinnerVagasInscritas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:layout_below="@+id/textView5"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView5"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="11dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Id da Vaga: "
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="Id da Vaga: "
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewIdI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Id"
-                    android:layout_marginLeft="16dp" />
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Id" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nome da Vaga: "
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="Nome da Vaga: "
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewNomeI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nome"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Nome" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Descrição da Vaga: "
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="Descrição da Vaga: "
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewDescricaoI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Descrição"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Descrição" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pré-Requisitos da Vaga: "
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="Pré-Requisitos da Vaga: "
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewRequisitosI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Requisitos"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Requisitos" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quantidade de Vagas: "
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="Quantidade de Vagas: "
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewQuantidadeI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Quantidade"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Quantidade" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Endereço: "
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="Endereço: "
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewRuaI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rua"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Rua" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Complemento: "
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="Complemento: "
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewComplementoI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Complemento"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Complemento" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bairro: "
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="Bairro: "
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewBairroI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bairro"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Bairro" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cidade: "
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="Cidade: "
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewCidadeI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cidade"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Cidade" />
 
-                <Button
-                    android:id="@+id/buttonIrProjeto"
+                <LinearLayout
+                    android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Ver Informações do Projeto"/>
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/buttonIrInstituicao"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Ver Informações da Instituição"/>
+                    <LinearLayout
+                        android:id="@+id/linearLayoutum"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="45dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/buttonCancelarParticipacao"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Cancelar participação"/>
+                        <Button
+                            android:id="@+id/buttonIrProjeto"
+                            android:layout_width="250dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/botaobusca"
+                            android:text="Ver Informações do Projeto" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutdois"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="45dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/buttonIrInstituicao"
+                            android:layout_width="280dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/botaobusca"
+                            android:text="Ver Informações da Instituição" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayouttres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="45dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/buttonCancelarParticipacao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="50dp"
+                            android:background="@drawable/botaoapaga"
+                            android:text="Cancelar participação" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/textViewNenhumaVaga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nenhuma Vaga Disponível"/>
+                android:gravity="center"
+                android:text="Nenhuma Vaga Disponível"
+                android:textColor="@android:color/black" />
 
         </LinearLayout>
-
-
-
 
 
     </ScrollView>

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo1">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
         android:text="Meus Projetos e Instituições"
-        android:textSize="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textColor="@android:color/black"
+        android:textSize="30dp" />
     <!--
         <ListView
             android:id="@+id/listViewProjetos"
@@ -29,41 +32,46 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="5dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/linearLayoutInstituicaoCadastrada"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/textView2"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="17dp"
+                android:layout_below="@+id/textView2"
                 android:layout_marginBottom="17dp"
+                android:layout_marginTop="17dp"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Instituição"
-                    android:layout_marginTop="15dp"
-                    android:id="@+id/textView5"
-                    android:layout_below="@+id/textView2"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView2"
+                    android:text="Instituição"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp" />
 
                 <Spinner
                     android:id="@+id/spinnerInstituicao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:layout_below="@+id/textView5"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView5"
+                    android:layout_marginTop="10dp" />
 
                 <TextView
                     android:id="@+id/textViewInstituicaNome"
@@ -73,9 +81,9 @@
                     android:layout_alignStart="@+id/textView2"
                     android:layout_below="@+id/spinnerInstituicao"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="18dp"
-                    android:text="TextView" />
+                    android:layout_marginTop="20dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewInstituicaoDescricao"
@@ -84,8 +92,9 @@
                     android:layout_alignLeft="@+id/textViewInstituicaNome"
                     android:layout_alignStart="@+id/textViewInstituicaNome"
                     android:layout_below="@+id/textViewInstituicaNome"
-                    android:layout_marginTop="18dp"
-                    android:text="TextView" />
+                    android:layout_marginTop="20dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewInstituicaoRua"
@@ -95,7 +104,8 @@
                     android:layout_alignStart="@+id/textViewInstituicaoDescricao"
                     android:layout_below="@+id/textViewInstituicaoDescricao"
                     android:layout_marginTop="20dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewInstituicaoComplemento"
@@ -104,8 +114,9 @@
                     android:layout_alignLeft="@+id/textViewInstituicaoRua"
                     android:layout_alignStart="@+id/textViewInstituicaoRua"
                     android:layout_below="@+id/textViewInstituicaoRua"
-                    android:layout_marginTop="30dp"
-                    android:text="TextView" />
+                    android:layout_marginTop="20dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewInstituicaoBairro"
@@ -114,8 +125,9 @@
                     android:layout_alignLeft="@+id/textViewInstituicaoComplemento"
                     android:layout_alignStart="@+id/textViewInstituicaoComplemento"
                     android:layout_below="@+id/textViewInstituicaoComplemento"
-                    android:layout_marginTop="28dp"
-                    android:text="TextView" />
+                    android:layout_marginTop="20dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewInstituicaoEmail"
@@ -124,8 +136,9 @@
                     android:layout_alignLeft="@+id/textViewInstituicaoBairro"
                     android:layout_alignStart="@+id/textViewInstituicaoBairro"
                     android:layout_below="@+id/textViewInstituicaoBairro"
-                    android:layout_marginTop="18dp"
-                    android:text="TextView" />
+                    android:layout_marginTop="20dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewInstituicaoWebsite"
@@ -134,8 +147,9 @@
                     android:layout_alignLeft="@+id/textViewInstituicaoEmail"
                     android:layout_alignStart="@+id/textViewInstituicaoEmail"
                     android:layout_below="@+id/textViewInstituicaoEmail"
-                    android:layout_marginTop="26dp"
-                    android:text="TextView" />
+                    android:layout_marginTop="20dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewInstituicaoCidade"
@@ -144,34 +158,59 @@
                     android:layout_alignLeft="@+id/textViewInstituicaoWebsite"
                     android:layout_alignStart="@+id/textViewInstituicaoWebsite"
                     android:layout_below="@+id/textViewInstituicaoWebsite"
-                    android:layout_marginTop="14dp"
-                    android:text="TextView" />
+                    android:layout_marginTop="20dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
-                <Button
-                    android:id="@+id/buttonAtualizaInstituicao"
-                    android:layout_width="200dp"
-                    android:layout_height="60dp"
-                    android:text="Atualizar Cadastro da Instituição"
-                    android:layout_alignLeft="@+id/textViewInstituicaoCidade"
-                    android:layout_alignStart="@+id/textViewInstituicaoCidade"
-                    android:layout_below="@+id/textViewInstituicaoCidade"
-                    android:layout_marginTop="14dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginTop="20dp"
+                    android:gravity="left"
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/buttonDeleteInstituicao"
-                    android:layout_width="200dp"
-                    android:layout_height="60dp"
-                    android:text="Apagar Cadastro da Instituição"
-                    android:layout_alignLeft="@+id/buttonAtualizaInstituicao"
-                    android:layout_alignStart="@+id/buttonAtualizaInstituicao"
-                    android:layout_below="@+id/buttonAtualizaInstituicao"
-                    android:layout_marginTop="14dp"/>
+                    <Button
+                        android:id="@+id/buttonAtualizaInstituicao"
+                        android:layout_width="200dp"
+                        android:layout_height="60dp"
+                        android:layout_alignLeft="@+id/textViewInstituicaoCidade"
+                        android:layout_alignStart="@+id/textViewInstituicaoCidade"
+                        android:layout_below="@+id/textViewInstituicaoCidade"
+                        android:background="@drawable/botaoregistro"
+                        android:text="Atualizar Cadastro da Instituição" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginTop="20dp"
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/buttonDeleteInstituicao"
+                        android:layout_width="200dp"
+                        android:layout_height="60dp"
+                        android:layout_alignLeft="@+id/buttonAtualizaInstituicao"
+                        android:layout_alignStart="@+id/buttonAtualizaInstituicao"
+                        android:layout_below="@+id/buttonAtualizaInstituicao"
+                        android:background="@drawable/botaoapaga"
+                        android:text="Apagar Cadastro da Instituição" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linearLayoutProjetoMP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/tituloProjeto"
                         android:layout_width="match_parent"
@@ -179,8 +218,10 @@
                         android:layout_alignLeft="@+id/buttonDeleteInstituicao"
                         android:layout_alignStart="@+id/buttonDeleteInstituicao"
                         android:layout_below="@+id/buttonDeleteInstituicao"
-                        android:layout_marginTop="14dp"
-                        android:text="Projeto" />
+                        android:layout_marginLeft="12dp"
+                        android:text="Projeto"
+                        android:textColor="@android:color/black"
+                        android:textSize="24sp" />
 
                     <Spinner
                         android:id="@+id/spinnerProjeto"
@@ -189,7 +230,7 @@
                         android:layout_alignLeft="@+id/textViewInstituicaoCidade"
                         android:layout_alignStart="@+id/textViewInstituicaoCidade"
                         android:layout_below="@+id/tituloProjeto"
-                        android:layout_marginTop="14dp"/>
+                        android:layout_marginTop="10dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -197,8 +238,9 @@
                         android:layout_alignLeft="@+id/buttonDeleteInstituicao"
                         android:layout_alignStart="@+id/buttonDeleteInstituicao"
                         android:layout_below="@+id/buttonDeleteInstituicao"
-                        android:layout_marginTop="14dp"
-                        android:text="Descriçao do Projeto" />
+                        android:layout_marginTop="20dp"
+                        android:text="Descriçao do Projeto"
+                        android:textColor="@android:color/black" />
 
                     <TextView
                         android:id="@+id/descricaoProjetoMP"
@@ -207,35 +249,59 @@
                         android:layout_alignLeft="@+id/buttonDeleteInstituicao"
                         android:layout_alignStart="@+id/buttonDeleteInstituicao"
                         android:layout_below="@+id/buttonDeleteInstituicao"
-                        android:layout_marginTop="14dp"
-                        android:text="Descrição" />
+                        android:layout_marginTop="20dp"
+                        android:text="Descrição"
+                        android:textColor="@android:color/black" />
 
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/textView2"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/buttonAtualizaProjeto"
-                        android:layout_width="200dp"
-                        android:layout_height="60dp"
-                        android:text="Atualizar Cadastro da Instituição"
-                        android:layout_alignLeft="@+id/textViewInstituicaoCidade"
-                        android:layout_alignStart="@+id/textViewInstituicaoCidade"
-                        android:layout_below="@+id/textViewInstituicaoCidade"
-                        android:layout_marginTop="14dp"/>
+                        <Button
+                            android:id="@+id/buttonAtualizaProjeto"
+                            android:layout_width="200dp"
+                            android:layout_height="60dp"
+                            android:layout_alignLeft="@+id/textViewInstituicaoCidade"
+                            android:layout_alignStart="@+id/textViewInstituicaoCidade"
+                            android:layout_below="@+id/textViewInstituicaoCidade"
+                            android:background="@drawable/botaoregistro"
+                            android:gravity="center_horizontal|center"
+                            android:text="Atualizar Cadastro do projeto" />
+                    </LinearLayout>
 
-                    <Button
-                        android:id="@+id/buttonDeleteProjeto"
-                        android:layout_width="200dp"
-                        android:layout_height="60dp"
-                        android:text="Apagar Cadastro da Instituição"
-                        android:layout_alignLeft="@+id/buttonAtualizaInstituicao"
-                        android:layout_alignStart="@+id/buttonAtualizaInstituicao"
-                        android:layout_below="@+id/buttonAtualizaInstituicao"
-                        android:layout_marginTop="14dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/textView2"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/buttonDeleteProjeto"
+                            android:layout_width="200dp"
+                            android:layout_height="60dp"
+                            android:layout_alignLeft="@+id/buttonAtualizaInstituicao"
+                            android:layout_alignStart="@+id/buttonAtualizaInstituicao"
+                            android:layout_below="@+id/buttonAtualizaInstituicao"
+                            android:background="@drawable/botaoapaga"
+                            android:text="Apagar Cadastro do projeto" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linearLayoutVagaMP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="35dp"
                         android:orientation="vertical"
                         android:visibility="gone">
 
@@ -246,8 +312,9 @@
                             android:layout_alignLeft="@+id/buttonDeleteInstituicao"
                             android:layout_alignStart="@+id/buttonDeleteInstituicao"
                             android:layout_below="@+id/buttonDeleteInstituicao"
-                            android:layout_marginTop="14dp"
-                            android:text="Projeto" />
+                            android:text="Vaga"
+                            android:textColor="@android:color/black"
+                            android:textSize="24sp" />
 
                         <Spinner
                             android:id="@+id/spinnerVagaMP"
@@ -256,153 +323,185 @@
                             android:layout_alignLeft="@+id/textViewInstituicaoCidade"
                             android:layout_alignStart="@+id/textViewInstituicaoCidade"
                             android:layout_below="@+id/tituloVagaMP"
-                            android:layout_marginTop="14dp"/>
+                            android:layout_marginTop="10dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Id da Vaga: "
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="20dp"
+                            android:text="Id da Vaga: "
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/textViewIdMP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Id"
-                            android:layout_marginLeft="16dp" />
+                            android:layout_marginLeft="16dp"
+                            android:text="Id" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nome da Vaga: "
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="20dp"
+                            android:text="Nome da Vaga: "
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/textViewNomeMP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nome"
-                            android:layout_marginLeft="16dp"/>
+                            android:layout_marginLeft="16dp"
+                            android:text="Nome" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Descrição da Vaga: "
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="20dp"
+                            android:text="Descrição da Vaga: "
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/textViewDescricaoMP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Descrição"
-                            android:layout_marginLeft="16dp"/>
+                            android:layout_marginLeft="16dp"
+                            android:text="Descrição" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pré-Requisitos da Vaga: "
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="20dp"
+                            android:text="Pré-Requisitos da Vaga: "
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/textViewRequisitosMP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Requisitos"
-                            android:layout_marginLeft="16dp"/>
+                            android:layout_marginLeft="16dp"
+                            android:text="Requisitos" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Quantidade de Vagas: "
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="20dp"
+                            android:text="Quantidade de Vagas: "
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/textViewQuantidadeMP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Quantidade"
-                            android:layout_marginLeft="16dp"/>
+                            android:layout_marginLeft="16dp"
+                            android:text="Quantidade" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Endereço: "
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="20dp"
+                            android:text="Endereço: "
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/textViewRuaMP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Rua"
-                            android:layout_marginLeft="16dp"/>
+                            android:layout_marginLeft="16dp"
+                            android:text="Rua" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Complemento: "
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="20dp"
+                            android:text="Complemento: "
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/textViewComplementoMP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Complemento"
-                            android:layout_marginLeft="16dp"/>
+                            android:layout_marginLeft="16dp"
+                            android:text="Complemento" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Bairro: "
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="20dp"
+                            android:text="Bairro: "
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/textViewBairroMP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Bairro"
-                            android:layout_marginLeft="16dp"/>
+                            android:layout_marginLeft="16dp"
+                            android:text="Bairro" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cidade: "
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="20dp"
+                            android:text="Cidade: "
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/textViewCidadeMP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Cidade"
-                            android:layout_marginLeft="16dp"/>
+                            android:layout_marginLeft="16dp"
+                            android:text="Cidade" />
 
-                        <Button
-                            android:id="@+id/buttonAtualizaVaga"
-                            android:layout_width="200dp"
-                            android:layout_height="60dp"
-                            android:text="Atualizar Cadastro da Instituição"
-                            android:layout_alignLeft="@+id/textViewInstituicaoCidade"
-                            android:layout_alignStart="@+id/textViewInstituicaoCidade"
-                            android:layout_below="@+id/textViewInstituicaoCidade"
-                            android:layout_marginTop="14dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/textView2"
+                            android:layout_marginTop="20dp"
+                            android:gravity="right"
+                            android:orientation="vertical">
 
-                        <Button
-                            android:id="@+id/buttonDeleteVaga"
-                            android:layout_width="200dp"
-                            android:layout_height="60dp"
-                            android:text="Apagar Cadastro da Instituição"
-                            android:layout_alignLeft="@+id/buttonAtualizaInstituicao"
-                            android:layout_alignStart="@+id/buttonAtualizaInstituicao"
-                            android:layout_below="@+id/buttonAtualizaInstituicao"
-                            android:layout_marginTop="14dp"/>
+                            <Button
+                                android:id="@+id/buttonAtualizaVaga"
+                                android:layout_width="200dp"
+                                android:layout_height="60dp"
+                                android:layout_alignLeft="@+id/textViewInstituicaoCidade"
+                                android:layout_alignStart="@+id/textViewInstituicaoCidade"
+                                android:layout_below="@+id/textViewInstituicaoCidade"
+                                android:background="@drawable/botaoregistro"
+                                android:text="Atualizar Cadastro da Vaga" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/textView2"
+                            android:layout_marginTop="20dp"
+                            android:gravity="right"
+                            android:orientation="vertical">
+
+                            <Button
+                                android:id="@+id/buttonDeleteVaga"
+                                android:layout_width="200dp"
+                                android:layout_height="60dp"
+                                android:layout_alignLeft="@+id/buttonAtualizaInstituicao"
+                                android:layout_alignStart="@+id/buttonAtualizaInstituicao"
+                                android:layout_below="@+id/buttonAtualizaInstituicao"
+                                android:layout_marginBottom="50dp"
+                                android:background="@drawable/botaoapaga"
+                                android:text="Apagar Cadastro da Vaga" />
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -410,14 +509,18 @@
                         android:id="@+id/textViewNenhumaVagaCadastrada"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nenhum Projeto Cadastrado"/>
+                        android:gravity="center"
+                        android:text="Nenhum Projeto Cadastrado"
+                        android:textColor="@android:color/black" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/textViewNenhumProjetoCadastrado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nenhum Projeto Cadastrado"/>
+                    android:gravity="center"
+                    android:text="Nenhum Projeto Cadastrado"
+                    android:textColor="@android:color/black" />
 
             </LinearLayout>
 
@@ -425,7 +528,9 @@
                 android:id="@+id/textViewNenhumaIntituicaoCadastrada"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nenhuma Instituição Cadastrada"/>
+                android:gravity="center"
+                android:text="Nenhuma Instituição Cadastrada"
+                android:textColor="@android:color/black" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

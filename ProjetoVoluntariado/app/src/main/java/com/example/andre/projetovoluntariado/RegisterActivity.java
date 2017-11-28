@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -137,7 +138,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this,"Nome inválido",Toast.LENGTH_SHORT).show();
             valid = false;
         }
-        if((vemail.isEmpty())||(vemail.contains("^[a-Z@]"))){
+        //if((vemail.isEmpty())||(vemail.contains("^[a-Z@]"))){
+        if(isValidEmail(vemail)){
             Toast.makeText(this,"Email inválido",Toast.LENGTH_SHORT).show();
             valid = false;
         }
@@ -151,4 +153,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
         return valid;
     }
+
+    private static boolean isValidEmail(String emailt) {
+        return !TextUtils.isEmpty(emailt) && android.util.Patterns.EMAIL_ADDRESS.matcher(emailt).matches();
+    }
+
 }
